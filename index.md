@@ -4,6 +4,14 @@
 
 ## CodeForces
 **[CodeForces@AngoldW](https://codeforces.com/profile/AngoldW)**
+### 2021
+> **May**
+> [DominoPiling.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/DominoPiling.cpp)
+> [NextRound.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/NextRound.cpp)
+> [Team.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Team.cpp)
+> [Watermelon.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Watermelon.cpp)
+> [WayTooLongWords.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/WayTooLongWords.cpp)
+
 
 ## Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)
