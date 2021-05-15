@@ -9,7 +9,12 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 int main() {
+=======
+int main()
+{
+>>>>>>> 1d3925345470400c2904c1da7c10b0ff7a61e816
     int n, k;
     // By default, leading whitespace (carriage returns, tabs, spaces) is ignored by cin.
     cin >> n >> k;
@@ -35,3 +40,39 @@ int main() {
     cout << n << endl;
     return 0;
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 1d3925345470400c2904c1da7c10b0ff7a61e816
