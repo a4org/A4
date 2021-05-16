@@ -11,7 +11,11 @@
 > [Team.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Team.cpp)
 > [Watermelon.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Watermelon.cpp)
 > [WayTooLongWords.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/WayTooLongWords.cpp)
-
+> [Bit++.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Bit%2B%2B.cpp)
+> [BeautifulMatrix.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/BeautifulMatrix.cpp)
+> [HelpfulMaths.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/HelpfulMaths.cpp)
+> [PetyaAndStrings.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/PetyaAndStrings.cpp)
+> [WordCapitalization.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/WordCapitalization.cpp)
 
 ## Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)
