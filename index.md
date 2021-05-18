@@ -16,6 +16,16 @@
 > [HelpfulMaths.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/HelpfulMaths.cpp)
 > [PetyaAndStrings.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/PetyaAndStrings.cpp)
 > [WordCapitalization.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/WordCapitalization.cpp)
+> [BearAndBigBrother.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/BearAndBigBrother.cpp)
+> [BoyOrGirl.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/BoyOrGirl.cpp)
+> [Football.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Football.cpp)
+> [HQ9+.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/HQ9%2B.cpp)
+> [SoldierAndBananas.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/SoldierAndBananas.cpp)
+> [StonesOnTheTable.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/StonesOnTheTable.cpp)
+> [StringTask.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/StringTask.cpp)
+> [Taxi.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Taxi.cpp)
+> [TheatreSquare.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/TheatreSquare.cpp)
+> [Twins.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Twins.cpp)
 
 ## Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)

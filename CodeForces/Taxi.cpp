@@ -30,7 +30,6 @@ int main() {
 	    *vie += *vib;
 	    vib = needCars.erase(vib);
 	} vie--;
-	cout << endl;
     }
 
     cout << needCars.size() << endl;
