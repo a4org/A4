@@ -13,9 +13,10 @@ using namespace::std;
 int b_s(vector<int> &vi, vector<int>::iterator vib, vector<int>::iterator vie, int target) {
     auto mid = vib + (vie - vib) / 2;
 
+    if (target < *vi.begin()) return 0;
+    if (target >= *(vi.end()-1)) return vi.size();
+
     if (vib == vie - 1 && *vib != target) {
-	return vib - vi.begin();
-    } else if (vib == vie - 1 && *vib != target) {
 	return vib - vi.begin() + 1;
     }
 
@@ -27,7 +28,6 @@ int b_s(vector<int> &vi, vector<int>::iterator vib, vector<int>::iterator vie, i
 	return mid - vi.begin() + 1;
     }
 
-    return -1;
 }
  
 int main() {
