@@ -26,6 +26,12 @@
 > [Taxi.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Taxi.cpp)
 > [TheatreSquare.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/TheatreSquare.cpp)
 > [Twins.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Twins.cpp)
+> [ChatRoom.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/ChatRoom.cpp)
+> [InterestingDrinks.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/InterestingDrinks.cpp)
+> [LuckyDivision.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/LuckyDivision.cpp)
+> [YoungPhysicist.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/YoungPhysicist.cpp)
+> [FancyFence.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/FancyFence.cpp)
+> [VanyaAndLanterns.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/VanyaAndLanterns.cpp)
 
 ## Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)
