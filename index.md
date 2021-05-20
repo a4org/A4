@@ -32,6 +32,10 @@
 > [YoungPhysicist.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/YoungPhysicist.cpp)
 > [FancyFence.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/FancyFence.cpp)
 > [VanyaAndLanterns.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/VanyaAndLanterns.cpp)
+> [IQTest.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/IQTest.cpp)
+> [BerSUBall.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/BerSUBall.cpp)
+> [CheapTravel.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/CheapTravel.cpp)
+> [FlippingGame.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/FlippingGame.cpp)
 
 ## Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)
