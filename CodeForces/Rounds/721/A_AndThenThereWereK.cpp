@@ -7,9 +7,9 @@ int main() {
     cin >> num;
 
     while(num--) {
-	int n;
+	long long n;
 	cin >> n;
-	int ans = n;
+	long long ans = n;
 	for (int i = n-1; i >= 0; i--) {
 	    ans = ans & i;
 	    if (!ans) {
