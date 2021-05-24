@@ -36,6 +36,13 @@
 > [BerSUBall.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/BerSUBall.cpp)
 > [CheapTravel.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/CheapTravel.cpp)
 > [FlippingGame.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/FlippingGame.cpp)
+> [K-thNotDivisiblebyN.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/K-thNotDivisiblebyN.cpp)
+> [Worms.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Worms.cpp)
+> [BallInBerland.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/697/BallInBerland.cpp)
+> [NewYearsNumber.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/697/NewYearsNumber.cpp)
+> [OddDivisor.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/697/OddDivisor.cpp)
+> [NezzarAndColorfulBalls.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/698/NezzarAndColorfulBalls.cpp)
+> [NezzarAndLuckyNumber.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/698/NezzarAndLuckyNumber.cpp)
 
 ## Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)
