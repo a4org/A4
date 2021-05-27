@@ -2,9 +2,9 @@
 
 #### My daily work on competitive programming
 
-## CodeForces
+### CodeForces
 **[CodeForces@AngoldW](https://codeforces.com/profile/AngoldW)**
-### 2021
+#### 2021
 > **May**
 > [DominoPiling.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/DominoPiling.cpp)
 > [NextRound.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/NextRound.cpp)
@@ -44,15 +44,15 @@
 > [NezzarAndColorfulBalls.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/698/NezzarAndColorfulBalls.cpp)
 > [NezzarAndLuckyNumber.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/CodeForces/Rounds/698/NezzarAndLuckyNumber.cpp)
 
-## Algorithms
+### Algorithms
 > [MergeSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/MergeSort)
 > [HeapSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/HeapSort)
 > [QuickSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/QuickSort)
 > [HeapSort](https://github.com/AngoldWange/Angorithm4/tree/main/Algorithms/Sorting/HeapSort)
 
-## Kattis
+### Kattis
 **[Kattis@Jiawei-Wang](https://open.kattis.com/users/jiawei-wang)**
-### 2021
+#### 2021
 > **April**
 > [2048.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/Kattis/2048.cpp)
 > [4thought.cpp](https://github.com/AngoldWange/Angorithm4/blob/main/Kattis/4thought.cpp)
