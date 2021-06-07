@@ -1,5 +1,6 @@
 /*
- * LeetCode June #2 Interleaving String
+ * LeetCode 97 Interleaving String
+ * Medium
  * Jiawei Wang
  * 2021 6.2
  */
@@ -48,6 +49,8 @@ using namespace::std;
    |         |         |         |
    o -- a -- o -- b -- o -- c -- x
 
+   time complexity : O(mn) (go through all chessboard)
+
 */
 
 // #2 DP Table
@@ -57,11 +60,12 @@ using namespace::std;
    Whether s1, s2 and s3 satisfy the interleaving string, 
    just depend on whether their one less character state meets the interleaving string property.
 
+   time complexity : O(mn)
 */
 
 class Solution {
 public:
-    // BFS
+    // #1BFS
     bool isInterleave1(string s1, string s2, string s3) {
         int l1 = s1.size(), l2 = s2.size(), l3 = s3.size();
         if (l1 + l2 != l3) return false;
@@ -89,7 +93,7 @@ public:
     }
 
     
-    // DP Table
+    // #2DP Table
     bool isInterleave2(string s1, string s2, string s3) {
 	int m = s1.size();
 	int n = s2.size();
