@@ -12,16 +12,17 @@ using namespace::std;
 
 // #1 Brutal
 /*
-
-
+ *
  */
 
 
 // #2 Dynamic Programming
 /*
-    
-   dp[i][j]=min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1
-
+ * dp[i][j] represents the maximum side length of the square with (i, j) in the lower right corner
+ *
+ * if dp[i][j] == 1:
+ * dp[i][j]=min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1
+ *
  */
 
 int maximalSquare1(vector<vector<char>>& matrix) {

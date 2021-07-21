@@ -45,7 +45,7 @@ class Solution {
 	    auto dp = vector<vector<int>>(N+1, vector<int>(N+1, 0));
 
 	    for (int i = 1; i <= N; i++) {
-		dp[i][i] = 1;  // the lps of any one char is 1
+		dp[i][i] = 1;  // the lps of any char is 1
 	    }
 
 	    for (int len = 2; len <= N; len++) {
