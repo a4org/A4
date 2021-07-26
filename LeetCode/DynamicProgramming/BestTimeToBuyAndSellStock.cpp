@@ -45,11 +45,13 @@ public:
     // #2 DP
     int maxProfit2(vector<int>& prices) {
 	int n = prices.size();
-	vector<int> lp = {prices[0]};
-	vector<int> mp = {0};
+	vector<int> lp(n);
+	vector<int> mp(n);
+	lp[0] = prices[0];
+	mp[0] = 0;
 	for (int i = 1; i < n; i++) {
-	    lp.push_back((prices[i] < lp[i-1]) ? prices[i] : lp[i-1]);
-	    mp.push_back(max(mp[i-1], prices[i] - lp[i]));
+	    lp[i] = ((prices[i] < lp[i-1]) ? prices[i] : lp[i-1]);
+	    mp[i] = (max(mp[i-1], prices[i] - lp[i]));
 	}
 	return mp[n-1];
     }
