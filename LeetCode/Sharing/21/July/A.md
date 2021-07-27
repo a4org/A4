@@ -1,4 +1,4 @@
-# 群主的每日分享#1 
+# 群主的分享#1 
 ##### by Jiawei Wang 
 ##### July 27 2021
 
@@ -8,7 +8,8 @@
 <br>
 
 27号也就是今天一共做了5道题：
-* **[#122 Best Time to Buy and Sell Stock ii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/) **
+
+* **[#122 Best Time to Buy and Sell Stock ii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)**
 * **[#123 Best TIme to Buy and Sell Stock iii](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/)**
 * **[#188 Best Time to Buy and Sell Stock iv](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/)**
 * **[#309 Best Time to Buy and Sell Stock with Cooldown](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)**
