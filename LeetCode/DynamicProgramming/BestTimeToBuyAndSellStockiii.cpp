@@ -12,9 +12,9 @@
  * hold1_i => max(0 - prices[i], hold1_i-1)
  *
  * 2) sold1_i: sold a stock that we have yesterday for the first time, or not.
- * sold_i => max(hold_i-1 + prices[i], sold_i-1)
+ * sold_i => max(hold_i-1 + prices[i], sold1_i-1)
  *
- * 3) hold2_i: buy a stock on the ith day for the secoond time, or not.
+ * 3) hold2_i: buy a stock on the ith day for the second time, or not.
  * hold2_i => max(sold1_i-1 - prices[i], hold2_i-1)
  *
  * 4) sold2_i: sold a stock that we have for the second time, or not
