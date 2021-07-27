@@ -45,8 +45,8 @@ public:
     // #2 DP
     int maxProfit2(vector<int>& prices) {
 	int n = prices.size();
-	vector<int> lp(n);
-	vector<int> mp(n);
+	int lp[n];
+	int mp[n];
 	lp[0] = prices[0];
 	mp[0] = 0;
 	for (int i = 1; i < n; i++) {
@@ -54,6 +54,19 @@ public:
 	    mp[i] = (max(mp[i-1], prices[i] - lp[i]));
 	}
 	return mp[n-1];
+    }
+    
+    // #3 DP reduce storage
+    int maxProfit3(vector<int>& prices) {
+	int lp = INT_MAX, mp = 0;
+	int lp_tmp, mp_tmp;
+	for (auto p : prices) {
+	    lp_tmp = lp;
+	    mp_tmp = mp;
+	    lp = min(lp_tmp, p);
+	    mp = max(mp_tmp, p - lp);
+	}
+	return mp;
     }
 };
 
