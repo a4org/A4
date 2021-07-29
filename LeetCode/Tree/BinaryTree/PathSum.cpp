@@ -46,3 +46,27 @@ public:
     }
     
 };
+
+
+/*
+ *The better way:
+ *Shuo Feng
+ *2021.7.29
+ */
+
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        
+        if(root == nullptr )
+            return false;
+        else 
+            targetSum -= root-> val;
+       
+        if(targetSum == 0 && (root-> left == nullptr && root-> right ==nullptr) )
+            return true;         
+ 
+        return hasPathSum(root-> left, targetSum)               // as same as : if(hasPathSum(root-> left, targetSum))
+            || hasPathSum(root-> right, targetSum);             //                  return hasPathSum(root-> left, targetSum);
+    }                                                           //              else if... 
+};
