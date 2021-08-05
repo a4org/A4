@@ -29,5 +29,4 @@ class Solution {
 	    if (odd_found) result++;
 	    return result;
 	}
-}
-
+};

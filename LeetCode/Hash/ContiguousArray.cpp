@@ -17,6 +17,8 @@
  * and make a Map to store all the Sum with its corresponding index
  *
  * The number between two index with the same sum will form a contiguous array
+ *
+ * 2021.8.5 revision: sum of positions when meet two equals means the numbers between these two positions were Contiguous Array
  * 
  * Time complexity: O(n)
  * Space complexity: O(n)
