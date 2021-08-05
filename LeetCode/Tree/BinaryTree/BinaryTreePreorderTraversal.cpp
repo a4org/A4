@@ -5,6 +5,11 @@
  * 2021 7.19
  */
 
+/*
+ * Preorder
+ * [root, left, right]
+ */
+
 struct TreeNode {
     int val;
     TreeNode *left;
