@@ -1,6 +1,6 @@
 /*
  * LeetCode 144  Binary Tree Preorder Traversal
- * Medium
+ * Easy
  * Jiawei Wang
  * 2021 7.19
  */
