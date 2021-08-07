@@ -90,6 +90,7 @@ public:
         int step = 0;
         
         while (!q.empty()) {
+	    // for each layer
             ++step;
             for (int size = q.size(); size > 0; size--) {                
                 string w = q.front();                
@@ -100,7 +101,7 @@ public:
                         w[i] = j;
                         // Found the solution
                         if (w == endWord) return step + 1;
-                        // Not in dict, skip it
+                        // Not in dict, skip it (means we erase it before)
                         if (!dict.count(w)) continue;
                         // Remove new word from dict
                         dict.erase(w);
