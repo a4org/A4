@@ -5,9 +5,6 @@
  * 2021.8.6
  */
 
-/* 
- * BFS
- */ 
 
 #include <vector> 
 
@@ -24,7 +21,8 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
+    // #1 BFS
+    vector<vector<int>> levelOrder1(TreeNode* root) {
 	if (!root) return {};
 	vector<vector<int>> ans;
 	vector<TreeNode*> Curr, Next;
@@ -41,6 +39,20 @@ public:
 	    Curr.swap(Next);
 	    Next.clear();
 	}
+	return ans;
+    }
+
+    // #2 DFS
+    vector<vector<int> > levelOrder2(TreeNode *root) {
+	vector<vector<int>> ans;
+	function<void(TreeNode*, int)> dfs = [&](TreeNode* r, int d) {
+	  if (!r) return;
+	  while (ans.size() <= d) ans.push_back({});      
+	  ans[d].push_back(r->val);      
+	  dfs(r->left, d + 1);
+	  dfs(r->right, d + 1);
+	};
+	dfs(root, 0);         
 	return ans;
     }
 };
