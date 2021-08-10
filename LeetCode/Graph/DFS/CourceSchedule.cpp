@@ -30,7 +30,7 @@ public:
 	for (int i = 0; i < numCourses; i++) {
 	    if (visited[i] == 0) {
 		if (dfs(i, visited)) 
-		    // Here comes a "ircle" means we cannot complete topological sort
+		    // Here comes a circle" means we cannot complete topological sort
 		    return false;
 	    }
 	}
@@ -55,7 +55,7 @@ public:
 	    }
 	}
 
-	visited[curr] = 2; // mark it as finishee
+	visited[curr] = 2; // mark it as finished
 	return false;
     }
 };

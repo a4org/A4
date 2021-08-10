@@ -85,5 +85,5 @@ class Solution {
 
 	    return ret;
 	}
-}
+};
 
