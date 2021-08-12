@@ -43,6 +43,7 @@ class Solution {
 
 public:
     // #1 Brute Force
+    // Time Complexity O(n^3)
     string longestPalindrome1(string s) {
 	int best_len = 0;
 	string best_s = "";
@@ -119,7 +120,8 @@ public:
     }
 
 
-    // #2 String
+    // #2 DP with mid
+    // Time Complexity: O(n^2)
     string longestPalindrome2(string s) {
 	int best_len = 0;
 	string best_s = "";
@@ -153,7 +155,7 @@ public:
 	return best_s;
     }
 
-    // #3 DP
+    // #3 DP with DP table
     string longestPalindrome3(string str) {
 	int n = str.size();
 	// tablep[i][j] will be false if substring str[i....j] is not palindrome
