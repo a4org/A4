@@ -28,7 +28,7 @@ using namespace::std;
  *
  * #3 DP
  * Runtime 136ms, Memory 8.1MB
- * Time Comlexity: O(n^2)
+ * Time Complexity: O(n^2)
  * Build a DP table:
  * tablep[i][j] will be false if substring str[i....j] is not palindrome
  *
@@ -55,6 +55,64 @@ public:
 		    best_len = len;
 		    best_s = subs;
 		}
+	    }
+	}
+	return best_s;
+    }
+
+    int good(int x, string s) {
+	// return the index of current "mid" length
+	// the Time Complexity is O(n^2)
+	// But because we use binary search, we just need to call this function
+	// O(logn) times instead of O(n) times in #1
+	int n = s.length();
+	for (int L = 0; L + x <= n; L++) {
+	    if (is_palindrome(s.substr(L, x))) {
+		return L;
+	    }
+	}
+	return -1;
+    }
+
+    // #1.5 Brute Force Using Binary Search (Time Complexity -> O(n^2logn))
+    string longestPalindrome15(string s) {
+	int best_len = 0;
+	string best_s = "";
+	int n = s.length();
+	for (int parity : {0, 1}) {
+	    int low = 0, high = n;
+	    if (low % 2 != parity) low++;
+	    if (high % 2 != parity) high--;
+
+	    while (low <= high) {
+		// try to find the maximum length
+		// using binary search
+
+		int mid = (low + high) / 2;
+		if (mid % 2 != parity) {
+		    // check again
+		    mid++;
+		}
+		if (mid > high) {
+		    break;
+		}
+
+		int tmp = good(mid, s); // good return the index of current "mid" length
+		if (tmp != -1) {
+		    // we find a valid palindrome substring
+		    // check if it is longer than best_len (curr)
+		    if (mid > best_len) {
+			best_len = mid;
+			best_s = s.substr(tmp, mid);
+		    }
+		    // binary search, try to get a bigger size
+		    low = mid + 2;
+		} else {
+		    // in this length we do not have a valid palindrome substr
+		    // so we try to shorten the "mid" size
+		    high = mid - 2;
+		}
+
 	    }
 	}
 	return best_s;
