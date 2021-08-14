@@ -38,3 +38,44 @@ public:
         Out_Put[level].push_back(root->val);
     }
 };
+
+
+
+/*
+ * Solution 2 : Bfs
+ * 2021.8.14
+ */
+
+#include<iostrea>
+#include<vector>
+#include<queue>
+
+using namespace std
+  
+  
+class Solution {
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+       vector<vector<int>> out_put;
+        if(!root) return {}; 
+
+        queue<TreeNode*> Queue; 
+        Queue.push(root);
+        while(!Queue.empty()){
+            int Size = Queue.size();
+            vector<int> line;
+
+            for(int i = 1; i<= Size; ++i){
+                TreeNode* point = Queue.front();
+                Queue.pop();
+                line.push_back(point-> val);
+                if(point-> left ) Queue.push(point-> left );
+                if(point-> right) Queue.push(point-> right);
+            }
+            out_put.push_back(line);
+        }
+        
+        reverse(out_put.begin(),out_put.end());
+        return out_put;
+    }
+};
