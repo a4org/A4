@@ -36,3 +36,45 @@ public:
         traverse(root->right, i + 1);
     }
 };
+
+/*
+ * Solution 2 :Bfs
+ * 2021.8.14
+ */
+
+/*
+ *  Use " Queue " to storage the line to searched.
+ *  Each cycles in " while " (line: 65 ) ,delete the line where we are and add the next line to " Queue "
+ *
+ */
+
+#include<iostream>
+#include<vector>
+#include<queue>
+using namespace std
+ 
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> out_put;
+        if(!root) return {}; 
+
+        queue<TreeNode*> Queue; 
+        Queue.push(root);
+        
+        while(!Queue.empty()){
+            int Size = Queue.size();
+            vector<int> line;
+
+            for(int i = 1; i<= Size; ++i){
+                TreeNode* point = Queue.front();
+                Queue.pop();
+                line.push_back(point-> val);
+                if(point-> left ) Queue.push(point-> left );
+                if(point-> right) Queue.push(point-> right);
+            }
+            out_put.push_back(line);
+        }
+        return out_put;
+    }
+};
