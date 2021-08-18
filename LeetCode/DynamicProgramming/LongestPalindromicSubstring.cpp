@@ -32,6 +32,10 @@ using namespace::std;
  * Build a DP table:
  * tablep[i][j] will be false if substring str[i....j] is not palindrome
  *
+ *
+ * #4 Manacher's algorithm
+ * Time Complexity: O(n)
+ *
  */
 
 class Solution {
@@ -198,5 +202,51 @@ public:
 
 	string best_s = str.substr(start, maxLength);
 	return best_s;
+    }
+
+    // #4 Manacher's algorithm
+    // https://www.youtube.com/watch?v=nbTSfrEfo6M
+    string longestPalindrome4(string s) {
+	string t = "#";
+	for (int i = 0; i < s.size(); i++) {
+	    // odd -> odd. even -> odd
+	    t += s.substr(i, 1) + "#";
+	}
+
+	int n = t.size();
+	vector<int> P(n, 0);
+	int maxCenter = -1;
+	int maxRight = -1;
+
+	for (int i = 0; i < n; i++) {
+	    int k; 
+	    if (i > maxRight) {
+		// caculate from scrach
+		k = 0;
+		while (i - k >=0 && i + k < n && t[i-k] == t[i+k]) k++;
+	    } else {
+		// mirror = P[maxCenter*2 - 1]
+		k = min(P[maxCenter*2 - i], maxRight - i);
+		while (i - k >=0 && i + k < n && t[i-k] == t[i+k]) k++; // maybe cause a new MaxRight
+	    }
+	    P[i] = k - 1; // k - 1 will remove the affect that "#" cause
+	    if (i + P[i] > maxRight) {
+		maxRight = i + P[i]; // update new MaxRight
+		maxCenter = i;
+	    }
+	}
+
+	int maxLen = -1;
+	int center;
+	for (int i = 0; i < P.size(); i++) {
+	    if (P[i] > maxLen) {
+		maxLen = P[i];
+		center = i;
+	    }
+	}
+
+	return s.substr(center/2 - maxLen/2, maxLen); // very brilliant idea
+	// since we added s.size() number of "#" to s
+	// the maxLen is just the origin radius * 2 which is the diameter (answer)
     }
 };
