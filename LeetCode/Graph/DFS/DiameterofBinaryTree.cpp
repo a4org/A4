@@ -20,6 +20,12 @@ struct TreeNode {
 
 class Solution {
 public:
+    // DP + DFS
+    // c <-- (2, 3)
+    //  \
+    //   a <- (1, 2)
+    //    \
+    //     b <- (0, 1)
     int diameterOfBinaryTree(TreeNode* root) {
 	return dfs(root).first;
     }
@@ -31,9 +37,13 @@ private:
 	    return {0, 0};
 	}
 
+	// divide the hole binary tree into pieces of subtrees
+	// from bottom to top each tree caculate their diameter recursively
+	
 	pair<int, int> left = dfs(root->left);
 	pair<int, int> right = dfs(root->right);
-	int diam = max({left.first, right.first, left.second + right.second});
+
+	int diam = max({left.first, right.first, left.second + right.second}); 
 	return {diam ,max(left.second, right.second) + 1};
     }
 };
