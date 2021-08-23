@@ -43,7 +43,9 @@ private:
 	pair<int, int> left = dfs(root->left);
 	pair<int, int> right = dfs(root->right);
 
+	// diam represents the maximum diameter till current node
 	int diam = max({left.first, right.first, left.second + right.second}); 
+	// depth also the maximum depth till current node
 	return {diam ,max(left.second, right.second) + 1};
     }
 };

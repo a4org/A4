@@ -34,6 +34,7 @@ public:
 	int pl = 0;
 	int pr = 0;
 
+	// for each node
 	if (root->left && root->val == root->left->val) pl = l + 1;
 	if (root->right && root->val == root->right->val) pr = r + 1;
 
