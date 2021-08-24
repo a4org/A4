@@ -18,6 +18,7 @@ int CombinationSumIV(vector<int>& nums, int target) {
     dp[0] = 1;
     for (int sum = 1; sum <= target; sum++) {
 	// for every sum from 1 to sum, traverse the hole nums to find the number of combinations
+	// each node can choosse any nums each time
 	for (int x : nums) {
 	    if (sum - x >= 0) dp[sum] += dp[sum-x];
 	}
