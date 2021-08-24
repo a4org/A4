@@ -11,11 +11,12 @@ using namespace::std;
 
 class Solution {
 public:
-    // #1 O(n^2) dp
+    // #1 O(n^2) dp (brute force)
     int wiggleMaxLength(vector<int>& nums) {
 	// two status
 	const int n = nums.size();
 	vector<vector<int>> dp(n, vector<int>(2));
+	// 2021.8.24: sequence! (status -- DP) (House Robber) (188 Best time to buy and sell stock iv)
 	// dp[i][0] --> smaller length
 	// dp[i][1] --> larger length
 	int answer = 0;
