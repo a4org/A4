@@ -15,6 +15,7 @@ using namespace::std;
 
 class Solution {
 public:
+    // DP Hash table 
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         unordered_set<string> dict(wordDict.cbegin(), wordDict.cend());
 
@@ -59,9 +60,8 @@ private:
             const string& left = s.substr(0, j);
             const vector<string> left_ans = append(wordBreak(left, dict), right);
             
-            // Notice, can not use mem_ here,
-            // since we haven't got the ans for s yet.
             ans.insert(ans.end(), left_ans.begin(), left_ans.end());
+	    // ans contains all left_ans
         }
         
         // memorize and return
