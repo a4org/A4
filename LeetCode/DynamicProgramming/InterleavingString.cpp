@@ -5,6 +5,11 @@
  * 2021 6.2
  */
 
+/* Revision
+ * $1: 2021 8.26 Jiawei Wang
+ *
+ */
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -65,7 +70,7 @@ using namespace::std;
 
 class Solution {
 public:
-    // #1BFS
+    // #1 BFS (Chess)
     bool isInterleave1(string s1, string s2, string s3) {
         int l1 = s1.size(), l2 = s2.size(), l3 = s3.size();
         if (l1 + l2 != l3) return false;
@@ -75,25 +80,33 @@ public:
         myqueue.push(pair<int, int>(0, 0));  // start point
         
         while(!myqueue.empty()) {
-            auto p = myqueue.front();
-            myqueue.pop();
+            auto p = myqueue.front(); // front pair
+            myqueue.pop(); // pop front (The "oldest" element of the queue)
             if (p.first == l1 && p.second == l2) {  // Reach the bottom-right corner
                 return true;
             }
-            if (visited[p.first][p.second]) continue;
+
+            if (visited[p.first][p.second]) continue; // if we reached that point before 
+	    // then do not need to search it again (pass) 
+	    // imagin that two route came to the same point
+
+	    // Sometimes, when s1[p.first] == s2[p.second]: two nodes (points) should be put into queue
             if (p.first < l1 && s1[p.first] == s3[p.first + p.second]) {
+		// get one s1 word, move one step down
                 myqueue.push(pair<int, int>(p.first + 1, p.second));
             }
             if (p.second < l2 && s2[p.second] == s3[p.first + p.second]) {
+		// get one s2 word, mive one step right
                 myqueue.push(pair<int, int>(p.first, p.second + 1));
             }
-            visited[p.first][p.second] = true;
+
+            visited[p.first][p.second] = true; // visited just means we can reach that point
         }
         return false;
     }
 
     
-    // #2DP Table
+    // #2 DP Table
     bool isInterleave2(string s1, string s2, string s3) {
 	int m = s1.size();
 	int n = s2.size();
@@ -101,6 +114,10 @@ public:
 	if (m+n!=s3.size()) return false;
 
 	auto dp = vector<vector<bool>>(m+1, vector<bool>(n+1, false));
+	// check its one less character state meets the interleaving property
+	// dp[i][j] means: choose the (0, i) indices of s1 and (0, j) of s2
+	// whether they can form an interleaving string s3 (0, i + j)
+	// Since s1.size() + s2.size() == s3.size(). We just return  dp[m][n]
 
 	s1 = '#'+s1;
 	s2 = '#'+s2;
@@ -108,6 +125,7 @@ public:
 
 	dp[0][0] = 1;
 
+	// i / j == 0
 	for (int i=1; i<=m; i++) {
 	    dp[i][0] = (dp[i-1][0]==true && s1[i]==s3[i]);
 	}
@@ -118,8 +136,8 @@ public:
 
 	for (int i=1; i<=m; i++) {
 	    for (int j=1; j<=n; j++) {
-		// i(s1) + j(s2)
-		if (s1[i]==s3[i+j] && dp[i-1][j])
+		// check its one less character state meets the interleaving property
+		if (s1[i]==s3[i+j] && dp[i-1][j]) 
 		    dp[i][j] = true;
 		else if (s2[j]==s3[i+j] && dp[i][j-1])
 		    dp[i][j] = true;
