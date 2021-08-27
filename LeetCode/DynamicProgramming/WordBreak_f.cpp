@@ -23,7 +23,7 @@ public:
             mem.emplace(word, true);
         }
         int size = s.size();
-        vector<int> dp(size + 1, 0)；
+        vector<int> dp(size + 1, 0);
         dp[0] = 1;  // Starting conditions
         
         // For faster speed, find the maximum and minimum length, and we can get the better starting place.
