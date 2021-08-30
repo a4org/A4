@@ -13,6 +13,11 @@
  
  */
 
+/* Revision:
+ * $1 2021.8.30 Jiawei Wang:
+ * dp[i] stands for all possible number of ways till ith day
+ */
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -37,8 +42,10 @@ public:
 
 	    // check if s[i-1:i] can stand for a letter
 	    if (s[i] >= '0' && s[i] <= '6' && (s[i-1] == '1' || s[i-1] == '2')) {
+		// (10, 16) (20, 26)
 		dp[i] += dp[i-2];
 	    } else if (s[i] >= '7' && s[i] <= '9' && s[i-1] == '1') {
+		// (17, 19)
 		dp[i] += dp[i-2];
 	    }
 	}
