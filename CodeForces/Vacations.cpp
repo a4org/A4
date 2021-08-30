@@ -4,7 +4,7 @@
  * 5 June 2021
  *
  * revision #1 on 23 July 2021
- * dp[days][0]: minimum days rested up to the current day if we resy on the current day
+ * dp[days][0]: minimum days rested up to the current day if we rest on the current day
  * dp[days][1]: minimum days rested up to the current day if we choose contest on the current day
  * dp[days][2]: minimum days rested up to the current day if we choose gym on the current day
  *
@@ -17,10 +17,14 @@
  * |   2    | INF |  0  |  1  | INF |
  * ----------------------------------
  * |   a    |  1  |  3  |  2  |  0  |
+ *
+ *
+ * revision #2 on 39 Aug 2021
+ * DP -> Consider all possibilities each iteration
+ *
  */
 
 #include <iostream>
-#include <stdio.h>
 #include <algorithm>
 
 using namespace::std;
