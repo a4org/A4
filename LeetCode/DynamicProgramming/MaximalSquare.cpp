@@ -7,7 +7,6 @@
 
 /* Revisions
  * $1 2021.8.30 Jiawei Wang
- * Understand #1 (more useful)
  */
 
 #include <iostream>
@@ -45,64 +44,81 @@ using namespace::std;
  * if dp[i][j] == 1:
  * dp[i][j]=min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1
  *
+ * Example:
+ * Matrix
+ * 1  0  1  0  0
+ * 1  0  1  1  1
+ * 1  1  1  1  1
+ * 1  0  0  1  0
+ *
+ * dp:
+ * 1  0  1  0  0
+ * 1  0  1  1  1
+ * 1  1  1  2  2
+ * 1  0  0  1  0
  */
 
+class Solution {
 // #1 Brute Force + DP
-int maximalSquare1(vector<vector<char>>& matrix) {
-        int M=matrix.size();
-        if (M==0) return 0;
-        int N=matrix[0].size();
-        
+    int maximalSquare1(vector<vector<char>>& matrix) {
+	int M=matrix.size();
+	if (M==0) return 0;
+	int N=matrix[0].size();
+	
 	// key point to understand brute force:
 	// sum[i][j] represents all 
-        auto sum=vector<vector<int>>(M+1,vector<int>(N+1,0)); // sum[i][j]
-        
+	auto sum=vector<vector<int>>(M+1,vector<int>(N+1,0)); // sum[i][j]
+	
 	// Build
-        for (int i=1; i<M+1; i++)
-            for (int j=1; j<N+1; j++) {
+	for (int i=1; i<M+1; i++)
+	    for (int j=1; j<N+1; j++) {
 		// treat sum[i][j] as low-right corner
 		// just check each iterations
-		// for a 2x2 matrix...
-                sum[i][j]=sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]+matrix[i-1][j-1]-'0'; // - '0' because elem of matrix is char
-            }
-            
-        int result = 0;
-        
-        for (int i=1; i<M+1; i++)
-            for (int j=1; j<N+1; j++) {
-                int k=1;
-                while (j-k>=0 && i-k>=0) {
+		// for instance: a 2x2 matrix...
+		sum[i][j]=sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]+matrix[i-1][j-1]-'0'; // - '0' because elem of matrix is char
+	    }
+	    
+	int result = 0;
+	
+	for (int i=1; i<M+1; i++)
+	    for (int j=1; j<N+1; j++) {
+		int k=1;
+		while (j-k>=0 && i-k>=0) {
 		    // understand carefully!
-                    int temp = sum[i][j]-sum[i-k][j]-sum[i][j-k]+sum[i-k][j-k];
-                    if (temp == k*k)
+		    int temp = sum[i][j]-sum[i-k][j]-sum[i][j-k]+sum[i-k][j-k];
+		    if (temp == k*k)
 			// if it is a square
-                        result = max(result, temp);
-                    k++;    
-                }
-            }
-            
-        return result;
+			result = max(result, temp);
+		    k++;    
+		}
+	    }
+	    
+	return result;
     }
 
-int maximalSquare2(vector<vector<char>>& matrix) {
-    int M = matrix.size();
-    if (M == 0) return 0;
-    int N = matrix[0].size();
-    auto dp = vector<vector<int>>(M+1, vector<int>(N+1, 0));
-    int result = 0;
+    // #2 DP
+    int maximalSquare2(vector<vector<char>>& matrix) {
+	int H = matrix.size();
+	int W = matrix[0].size();
+	if (H == 0 || W == 0) {
+	    return 0;
+	}
+	vector<vector<int>> dp(H, vector<int>(W)); // dp[i][j] -- best square ending at (i, j)
+	int answer = 0;
 
-    for (int i = 1; i <= M; i++) {
-	for (int j = 1; j <= N; j++) {
-	    if(matrix[i-1][j-1] == '0') {
-		dp[i][j] = 0;
-	    } else {
-		int temp = min(dp[i-1][j], dp[i][j-1]);
-		temp = min(temp, dp[i-1][j-1]);
-		dp[i][j] = temp+1;
-		result = max(result, dp[i][j]*dp[i][j]);
+	for (int row = 0; row < H; ++row) {
+	    for (int col = 0; col < W; ++col) {
+		// we only check valid end point
+		if (matrix[row][col] == '1') {
+		    dp[row][col] = 1;
+		    if (row > 0 && col > 0) {
+			// most important part
+			dp[row][col] += min({dp[row-1][col], dp[row][col-1], dp[row-1][col-1]});
+		    }
+		    answer = max(dp[row][col], answer);
+		}
 	    }
 	}
+	return answer;
     }
-    return result;
-
-}
+};
