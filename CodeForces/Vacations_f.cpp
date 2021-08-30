@@ -52,7 +52,7 @@ int main() {
         //      Judge of the situation:
         //         1. If situation before is " 2 ", then write the contest (situation 1 ).
         //         2. If situation before is " 1 ", then do sport          (situation 2 ).
-        //         3. If situation before is " 0 ", write the contest, do sport, rest are possible (situation 3 ).( About line: )
+        //         3. If situation before is " 0 ", write the contest, do sport, rest are possible (situation 3 ).( About line: 58)
         else if (situ[i] == 3) {
             dp[i] = dp[i - 1];
             situ_before = situ[i] - situ_before;
