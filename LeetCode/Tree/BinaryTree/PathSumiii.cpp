@@ -1,8 +1,9 @@
 /*
- *LeetCode 437 Path Sum iii
- *Medium
- *Shuo Feng
- *2021.7.30
+ * LeetCode 437 Path Sum iii
+ * Medium
+ * Shuo Feng
+ * 2021.7.30
+ * Last edited at 2021.8.31
  */
 
 /*
@@ -27,11 +28,13 @@ struct TreeNode {
  
 class Solution {
 public:
-    int num = 0;
+    int num = 0; // Path num.
     int pathSum(TreeNode* root, int targetSum) {
         traversal(root, targetSum);
         return num;
     }
+    
+    // For each node, check the path after it.
     void traversal(TreeNode* root, int targetSum) {
         if (root) {
             Find_Path(root, targetSum);
