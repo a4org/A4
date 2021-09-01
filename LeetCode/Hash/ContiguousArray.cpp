@@ -24,6 +24,11 @@
  * Space complexity: O(n)
  */
 
+/* Revision
+ * $1 2021.9.1 Jiawei Wang
+ * Bidirectional: Maximum length question --> do not just think in one direction
+ */
+
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -34,7 +39,7 @@ class Solution {
 public:
     int findMaxLength(vector<int>& nums) {
 	int sum = 0;
-	// Map sum and position
+	// Map sum with position (index)
 	unordered_map<int, int> Map;
 
 	Map[0] = -1; // whatever
@@ -47,7 +52,7 @@ public:
 		// that means all numbers between these two index formed a contiguous array
 		Map[sum] = i;
 	    } else {
-		result = max(result, i - Map[sum]);
+		result = max(result, i - Map[sum]); // i - index means distance (length)
 	    }
 	}
 	return result;
