@@ -42,7 +42,11 @@ public:
 	// Map sum with position (index)
 	unordered_map<int, int> Map;
 
-	Map[0] = -1; // whatever
+	Map[0] = -1; 
+	// special case
+	// since initial is 0, when meet another 0 at index i 
+	// means the hole subarray from index 0 to i were contiguous array
+	// result = i - Map[0] = i + 1
 
 	int result = 0;
 	for (int i = 0; i < nums.size(); i++) {
@@ -52,6 +56,7 @@ public:
 		// that means all numbers between these two index formed a contiguous array
 		Map[sum] = i;
 	    } else {
+		// update result
 		result = max(result, i - Map[sum]); // i - index means distance (length)
 	    }
 	}
