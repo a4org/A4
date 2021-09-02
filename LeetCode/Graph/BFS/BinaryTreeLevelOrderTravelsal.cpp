@@ -28,7 +28,7 @@ public:
 	vector<TreeNode*> Curr, Next;
 	Curr.push_back(root);
 
-	while(!Curr.empty()) {
+	while(!Curr.empty()) {  // end situation
 	    // This layer
 	    ans.push_back({});
 	    for (TreeNode* node : Curr) {
