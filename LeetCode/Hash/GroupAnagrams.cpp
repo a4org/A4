@@ -5,6 +5,12 @@
  * 2021 7.19
  */
 
+/* Revision
+ * $1 2021.9.2 Jiawei Wang
+ * A very typical and pretty easy hash question
+ * Use a Hash table store all sorted strings with its rearranging phase
+ */
+
 #include <vector> 
 #include <string>
 #include <unordered_map>
@@ -23,7 +29,7 @@ public:
 	    Map[t].push_back(strs[i]);
 	}
 
-	vector<vector<string>>results;
+	vector<vector<string>> results;
 	for (auto a : Map) {
 	    results.push_back(a.second);
 	}
