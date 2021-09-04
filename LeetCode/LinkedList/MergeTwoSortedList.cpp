@@ -3,6 +3,7 @@
  * Easy
  * Shuo Feng
  * 2021.8.29
+ * Last edited at 2021.9.4
  */
 
 #include<iostream>
@@ -27,7 +28,7 @@ public:
         else if (l2 == NULL)
             return l1;
         
-        // Arrange after the smaller point.
+        // From head to end, find the point with smaller value, sort remainder after it.
         else if (l1->val > l2->val) {
             l2->next = mergeTwoLists(l1, l2->next);
             return l2;
@@ -36,6 +37,5 @@ public:
             l1->next = mergeTwoLists(l1->next, l2);
             return l1;
         }
-
     }
 };
