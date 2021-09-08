@@ -30,7 +30,19 @@
  * -------------------------------
  */
 
-
+/* Revision
+ * $1 2021.9.8 Jiawei Wang
+ * case#1: s[i] == s[j]
+ * a*****a -> dp[i][j] 
+ *	    = dp[i+1][j-1] + 2
+ * case#2: s[i] != s[j] pick the max of following #1 and #2:
+ * #1 ab*****b dp[i][j] = dp[i+1][j]
+ *     |     |
+ * #2 a*****ab dp[i][j] = dp[i][j-1]
+ *    |     |
+ *
+ * key: if s[i] != s[j]: dp[i][j] is not related to dp[i+1][j-1] (0)
+ */
 
 #include <vector>
 #include <string>
@@ -54,6 +66,7 @@ class Solution {
 		    if (s[i] == s[j]) 
 			dp[i][j] = dp[i+1][j-1] + 2;
 		    else 
+			// just see
 			dp[i][j] = max(dp[i][j-1], dp[i+1][j]);
 		}
 	    }
