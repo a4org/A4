@@ -5,6 +5,11 @@
  * 2021 7.21
  */
 
+
+/* Revision
+ * $1 2021.9.7 Jiawei Wang
+ */
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -49,6 +54,7 @@ public:
     // #1 Brute Force
     // Time Complexity O(n^3)
     string longestPalindrome1(string s) {
+	// find all substrings
 	int best_len = 0;
 	string best_s = "";
 	int n = s.length();
@@ -71,6 +77,7 @@ public:
 	// But because we use binary search, we just need to call this function
 	// O(logn) times instead of O(n) times in #1
 	int n = s.length();
+	// key: search all substrings with length x(mid) and return the first valid palindrome substring start point
 	for (int L = 0; L + x <= n; L++) {
 	    if (is_palindrome(s.substr(L, x))) {
 		return L;
@@ -93,7 +100,7 @@ public:
 		// try to find the maximum length
 		// using binary search
 
-		int mid = (low + high) / 2;
+		int mid = (low + high) / 2; // "mid" is the current search length
 		if (mid % 2 != parity) {
 		    // check again
 		    mid++;
@@ -102,7 +109,7 @@ public:
 		    break;
 		}
 
-		int tmp = good(mid, s); // good return the index of current "mid" length
+		int tmp = good(mid, s); // good return the left point of current "mid" length
 		if (tmp != -1) {
 		    // we find a valid palindrome substring
 		    // check if it is longer than best_len (curr)
@@ -111,11 +118,11 @@ public:
 			best_s = s.substr(tmp, mid);
 		    }
 		    // binary search, try to get a bigger size
-		    low = mid + 2;
+		    low = mid + 2; // new mid = length + mid / 2 + 1
 		} else {
 		    // in this length we do not have a valid palindrome substr
 		    // so we try to shorten the "mid" size
-		    high = mid - 2;
+		    high = mid - 2; // new mid = mid / 2 -1
 		}
 
 	    }
@@ -132,6 +139,7 @@ public:
 	int n = s.length();
 	// odd
 	for (int mid = 0; mid < n; mid++) {
+	    // search every mid points
 	    for (int x = 0; mid - x >= 0 && mid + x < n; x++) {
 		if (s[mid-x] != s[mid+x]) {
 		    break;
@@ -183,9 +191,10 @@ public:
 	    }
 	}
 
+	// table interval from small (1, 2) to large (3...)
 	for (int k = 3; k <= n; ++k) {   // k is length of substring
 	    // check for lengths greater than 2
-	    for (int i = 0; i < n - k + 1; ++i) {   // i is the starting index
+	    for (int i = 0; i + k - 1 < n; ++i) {   // i is the starting index
 		int j = i + k - 1;  // j is the ending index
 
 		// if str[i+1] to str[j-1] is a palindrome (table[i+1][j-1] == true) and str[i] == str[j]
@@ -207,6 +216,10 @@ public:
     // #4 Manacher's algorithm
     // https://www.youtube.com/watch?v=nbTSfrEfo6M
     string longestPalindrome4(string s) {
+	// key idea: 
+	// 1. Add "#" to every two adjancent chars to avoid parity problem
+	// 2. How to cut down the number of expansions -> palindromes are symmeric at the center 
+	// 3.
 	string t = "#";
 	for (int i = 0; i < s.size(); i++) {
 	    // odd -> odd. even -> odd
@@ -219,6 +232,7 @@ public:
 	int maxRight = -1;
 
 	for (int i = 0; i < n; i++) {
+	    // i is the current center 
 	    int k; 
 	    if (i > maxRight) {
 		// caculate from scrach
@@ -226,11 +240,12 @@ public:
 		while (i - k >=0 && i + k < n && t[i-k] == t[i+k]) k++;
 	    } else {
 		// mirror = P[maxCenter*2 - 1]
-		k = min(P[maxCenter*2 - i], maxRight - i);
+		k = min(P[maxCenter*2 - i], maxRight - i); // no one can guarentee the numbers beyond maxRight
 		while (i - k >=0 && i + k < n && t[i-k] == t[i+k]) k++; // maybe cause a new MaxRight
 	    }
 	    P[i] = k - 1; // k - 1 will remove the affect that "#" cause
 	    if (i + P[i] > maxRight) {
+		// i expanded beyond the main palindrome
 		maxRight = i + P[i]; // update new MaxRight
 		maxCenter = i;
 	    }
