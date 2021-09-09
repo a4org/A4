@@ -11,6 +11,11 @@
  * 2: not rob first house => N [2 to i]
  */
 
+/* Revision
+ * $1 2021.9.9 Jiawei Wang
+ * Consider all cases (classify)
+ */
+
 #include <vector>
 
 using namespace::std;
@@ -24,7 +29,7 @@ public:
         
         int ret = 0;
         
-	// Case 2
+	// Case 2 do not rob first house
         int rob = nums[1], norob = 0;        
         for (int i=2; i<n; i++) {
             int rob_tmp = rob, norob_tmp = norob;
@@ -33,7 +38,7 @@ public:
         }
         ret = max(rob, norob);
         
-	// Case 1
+	// Case 1 rob the first house
         rob = nums[0], norob =0;
         for (int i=1; i<n-1; i++) {
             int rob_tmp = rob, norob_tmp = norob;

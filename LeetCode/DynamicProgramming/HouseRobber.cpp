@@ -5,6 +5,11 @@
  * 2021 7.25
  */
 
+/* Revision
+ * $1 2021.9.9 Jiawei Wang
+ * a simple dp question
+ */
+
 /* DP (dual status)
  * choose i => not choose i-1
  * not choose i => choose i-1 or not choose i-1
