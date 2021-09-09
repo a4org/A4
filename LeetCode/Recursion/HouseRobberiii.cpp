@@ -5,6 +5,12 @@
  * 2021 7.25
  */
 
+/* Revision
+ * $1 2021.9.9 Jiawei Wang
+ * For each house, the thief can choose rob it or not
+ * To understand why #2 uses Hash ->  Why #1 has many repetitive dfs? 
+ * Cannot choose this node (flag == 0) with can but do not choose this node (flag == 1)
+ */
 
 /* #1 Normal Recursive DFS
  * Correct but exceed the time limit
@@ -52,8 +58,8 @@ class Solution {
 
 
 	// #2 Recursive DFS with Hash
-	unordered_map<TreeNode*, int> flag0;
-	unordered_map<TreeNode*, int> flag1;
+	unordered_map<TreeNode*, int> flag0; // flag0[TreeNode* Node] := maximum amount of money if we can't choose current node 
+	unordered_map<TreeNode*, int> flag1; // from Node to the leaf node of the tree
 
 	int rob2(TreeNode* root) {
 	    return DFS2(root, 1);
