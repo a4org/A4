@@ -5,6 +5,14 @@
  * 2021 7.26
  */
 
+/* Revision
+ * $1 2021.9.10 Jiawei Wang
+ * For each days, you only have two options -- buy and sell
+ * for the ith day
+ * sell = max(sell, prices[i] - buy)
+ * buy = min(buy, prices[i]);
+ */
+
 /* #1 Brute force:
  * Enumerate all possible cases, and find the maximum difference.
  * Time Complexity: O(n^2) TLE
@@ -67,6 +75,20 @@ public:
 	    mp = max(mp_tmp, p - lp);
 	}
 	return mp;
+    }
+
+    // #3 2021.9.10 redo Jiawei Wang
+    int maxProfit4(vector<int>& prices) {
+        int buy = prices[0];
+        int sell = INT_MIN;
+        int n = prices.size();
+        
+        for (int i = 1; i < n; i++) {
+            int price = prices[i];
+            sell = max(sell, price - buy);
+            buy = min(prices[i], buy);
+        }
+        return max(0, sell);
     }
 };
 
