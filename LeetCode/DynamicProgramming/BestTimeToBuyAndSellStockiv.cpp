@@ -5,6 +5,12 @@
  * 2021 7.27
  */
 
+/* Revision
+ * $1 2021.9.11 Jiawei Wang
+ * Think more, but do not spend too much time on it. 
+ * Key(How to?): Do it when you are in a good state.
+ */
+
 /* #1 DP 
  * Build two dp tables: sold[i][k] and hold[i][k]
  *
@@ -42,14 +48,17 @@ public:
 	hold[0] = 0; sold[0] = 0;
 
 	for (int i = 0; i < n; i++) {
+	    // like 123 Best Time to Buy and Sell Stock iii (DP)
 	    // for the i-th day
+	    // consider all cases
 	    auto hold_old = hold;
 	    auto sold_old = sold;
+	    // we do not need to use O(n^2 Space) with two dp[i][k] tables
 	    for (int j=1; j<=k; j++) {
 		// with k status
-		hold[j] = max(sold_old[j-1] - prices[i], hold_old[j]);
-		sold[j] = max(hold_old[j] + prices[i], sold_old[j]);
-	    }
+		hold[j] = max(sold_old[j-1] - prices[i], hold_old[j]); 
+		sold[j] = max(hold_old[j] + prices[i], sold_old[j]); // Note hold_old[j] + prices[i]
+
 	}
 	int result = INT_MIN;
 	for (int j = 0; j <= k; j++) {

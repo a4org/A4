@@ -6,7 +6,7 @@
  */
 
 /* #1 DP
- * DP -- find more status (list all possible cases per day)
+ * DP -- list all possible cases per day
  *
  * hold : buy a stock
  * => max(hold_old, cooled_old - p)
@@ -16,6 +16,10 @@
  *
  * cooled : the next day after selling a stock 
  * => max(cooled_old, sold_old)
+ */
+
+/* Revision
+ * $1 2021.9.11 Jiawei Wang
  */
 
 #include <vector>
@@ -31,9 +35,9 @@ public:
 	    int hold2 = hold, sold2 = sold, cooled2 = cooled;
 	    int p = prices[i];
 
-	    hold = max(hold2, cooled2-p); 
+	    hold = max(hold2, cooled2-p); // hold can only comes from cooled2(that's key)
 	    sold = hold2 + p;
-	    cooled = max(cooled2, sold2); // understand this statement (key)
+	    cooled = max(cooled2, sold2);
 	}
 	return max(sold, cooled);
 };

@@ -5,6 +5,10 @@
  * 2021 7.27
  */
 
+/* Revision
+ * $1 2021.9.11 Jiawei Wang
+ */
+
 /* 
  * #1 DP
  * Unlike LeetCode #122 it should balance the number of transaction fee
