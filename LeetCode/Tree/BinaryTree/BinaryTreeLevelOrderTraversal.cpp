@@ -3,9 +3,10 @@
  * Medium
  * Shuo Feng
  * 2021 7.31
+ * Last edited at 2021.9.13
  */
  
- #include<iostream>
+#include<iostream>
 #include<vector>
 using namespace std;
 // Definition for a binary tree node.
@@ -59,16 +60,17 @@ public:
         vector<vector<int>> out_put;
         if(!root) return {}; 
 
-        queue<TreeNode*> Queue; 
+        queue<TreeNode*> Queue;
         Queue.push(root);
         
         while(!Queue.empty()){
             int Size = Queue.size();
             vector<int> line;
 
+            // For nodes in queue (in a line), add nodes on it`s left or right to the tail of queue, after loop, the queue storage the next line.
             for(int i = 1; i<= Size; ++i){
                 TreeNode* point = Queue.front();
-                Queue.pop();
+                Queue.pop();  // Remove
                 line.push_back(point-> val);
                 if(point-> left ) Queue.push(point-> left );
                 if(point-> right) Queue.push(point-> right);
