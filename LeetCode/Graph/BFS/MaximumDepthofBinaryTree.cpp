@@ -47,4 +47,4 @@ public:
 	return root == NULL? 0 : max(maxDepth2(root->left), maxDepth2(root->right));
     }
 
-}
+};
