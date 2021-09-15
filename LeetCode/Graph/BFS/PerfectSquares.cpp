@@ -76,4 +76,4 @@ public:
         }
         return nums[n];
     }
-};
+}; 
