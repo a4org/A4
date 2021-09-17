@@ -5,6 +5,11 @@
  * 2021.8.6
  */
 
+/* Revision
+ * $1 2021.9.17 Jiawei Wang
+ * DFS WOW
+ */
+
 
 #include <vector> 
 
@@ -43,16 +48,18 @@ public:
     }
 
     // #2 DFS
+    vector<vector<int>> ans;
     vector<vector<int> > levelOrder2(TreeNode *root) {
-	vector<vector<int>> ans;
-	function<void(TreeNode*, int)> dfs = [&](TreeNode* r, int d) {
-	  if (!r) return;
-	  while (ans.size() <= d) ans.push_back({});      
-	  ans[d].push_back(r->val);      
-	  dfs(r->left, d + 1);
-	  dfs(r->right, d + 1);
-	};
 	dfs(root, 0);         
 	return ans;
+    }
+
+private:
+    void dfs(TreeNode* r, int dep) {
+	if (!r) return;
+	while (ans.size() <= dep) ans.push_back({}); // add one more layer
+	ans[dep].push_back(r->val);
+	dfs(r->left, dep + 1);
+	dfs(r->right, dep + 1);
     }
 };
