@@ -3,12 +3,8 @@
  * Easy
  * Shuo Feng
  * 2021.8.19
+ * Last edited at 2021.9.18
  */
-
-/*
- * Solution 1: Bfs
- */
-
 
 #include<iostream>
 #include<vector>
@@ -24,7 +20,12 @@ using namespace std;
      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
- 
+
+/*
+ * Solution 1: Bfs
+ * Similar to Solution 2.
+ */
+
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
@@ -61,11 +62,12 @@ public:
         if(!root) return root;
         invertTree(root-> left);
         
+        // Replace left and right sub-tree.
         TreeNode* p = root-> left;
         root-> left = root-> right;
         root-> right = p;
         
-        // After invert.
+        // After invert, the left sub-tree is right sub-tree at the beginning.
         invertTree(root-> left);
         return root;
     }
