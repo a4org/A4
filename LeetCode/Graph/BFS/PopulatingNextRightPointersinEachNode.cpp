@@ -3,11 +3,7 @@
  * Medium
  * Shuo Feng
  * 2021.8.20
- */
-
-/*
- * Solution 1
- * For the node which is connected with next node, connect it`s right node and the left node of the next one.
+ * Last edited at 2021.9.19
  */
 
 #include<iostream>
@@ -23,14 +19,16 @@ public:
     Node* left;
     Node* right;
     Node* next;
-
     Node() : val(0), left(NULL), right(NULL), next(NULL) {}
-
     Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
-
     Node(int _val, Node* _left, Node* _right, Node* _next)
     : val(_val), left(_left), right(_right), next(_next) {}
 };
+
+/*
+ * Solution 1
+ *   For the node which is connected with next node, connect it`s right node and the left node of the next one.
+ */
 
 class Solution {
 public:
@@ -43,12 +41,13 @@ public:
         while (head->left != nullptr) {
             Node* node = head;
             while (node != nullptr) {
-
                 node->left->next = node->right;
+                
                 if (node->next != nullptr)
                     node->right->next = node->next->left;
                 node = node->next;
             }
+            // Next line.
             head = head->left;
         }
         return root;
@@ -58,7 +57,8 @@ public:
 
 /*
  * Solution 2: bfs
- * The faster way
+ *   The faster way.
+ *   Similar to solution 1, but use a queue to storage a line, connect nodes in next line and put then in queue.
  */
 
 class Solution {
@@ -66,7 +66,7 @@ public:
     Node* connect(Node* root) {
         if (!root) return root;
 
-        queue<Node*> q; // Queue to storage all node in a line
+        queue<Node*> q; // Queue to storage all node in a line.
         q.push(root); 
 
         while (!q.empty()) {
