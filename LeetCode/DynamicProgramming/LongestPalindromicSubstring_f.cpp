@@ -3,13 +3,13 @@
  * Medium
  * Shuo Feng
  * 2021.8.24
+ * Last edited at 2021.9.23
  */
 
 /*
  * Solution 1 dp
- * 
- * Use dp[i][j] to stand the Relation between s[i] and s[j].
- * 
+ *   Use dp[i][j] to stand the Relation between s[i] and s[j].
+ *   Judge substring from short to long, move a window of determined length from left to right, and record palindromic substring.
  */
 
 #include<iostream>
@@ -30,29 +30,31 @@ public:
             dp[i][i] = 1;
         }
 
+        // Start with length 2 (at least 2 characters)
         for (int length = 2; length <= size; ++length) {
-            for (int L = 0; L < size; ++L) {  // left starting point.
-                int R = length + L - 1;       // right point  ( R- L+ 1 = length ).
-                if (R >= size) break;
+            
+            for (int Left= 0; Left < size; ++Left) { // Left  point.
+                int Right = length + Left - 1;       // Right point  (Right - Left + 1 = length).
+                if (Right >= size) break;
 
-                if (s[L] == s[R]) {
-                    //length <= 3 (" bb " " bab ").
-                    if (R - L + 1 <= 3) { 
-                        dp[L][R] = 1;
-                    }  
+                if (s[Left] == s[Right]) {
+                     // length <= 3 (" bb " " bab ").
+                    if (Right - Left + 1 <= 3) {
+                        dp[Left][Right] = 1;
+                    }
                     else
-                        dp[L][R] = dp[L + 1][R - 1];
+                        // According to the shorter substring between Left and Right.
+                        dp[Left][Right] = dp[Left + 1][Right - 1];
                 }
-                else dp[L][R] = 0;
-                
-                // Search the longest one.
-                if (dp[L][R] == 1 && max_length < R - L + 1) {
-                    begin = L;
-                    max_length = R - L + 1;
+                else dp[Left][Right] = 0;
+
+                // Update the maximum length.
+                if ( dp[Left][Right] == 1 && max_length < Right - Left + 1) {
+                    begin = Left;
+                    max_length = Right - Left + 1;
                 }
             }
         }
         return s.substr(begin, max_length);
     }
 };
-
