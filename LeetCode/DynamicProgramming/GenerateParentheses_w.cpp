@@ -24,7 +24,7 @@ using namespace::std;
 
 class Solution {
 public:
-    // #1 DP + DFS 
+    // Backtracking (DP + DFS)
     vector<string> generateParenthesis(int n) {
         vector<string> res;
 	// all valid parentheses must have n '(' and n ')'
