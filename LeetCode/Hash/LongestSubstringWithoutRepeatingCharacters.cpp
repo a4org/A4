@@ -20,6 +20,10 @@
  * Keep track the valid starting point, this point should be unique among all the points from i to j
  */
 
+/* Revision
+ * $1 2021.9.24 Jiawei Wang
+ */
+
 #include <string>
 #include <vector>
 
@@ -33,7 +37,8 @@ public:
 	const int n = s.length();
 	int ans = 0;
 	for (int i = 0; i < n; ++i) { // for each starting index i
-	    vector<int> seen(128);
+	    // each starting index we need to build a new seen vector
+	    vector<int> seen(128); // ascii chars
 	    int j = i;
 	    while (j < n && !seen[s[j]])
 		// get the longest substring
@@ -52,7 +57,7 @@ public:
 	vector<int> idx(128, -1); // ascii
 	for (int i = 0, j = 0; j < n; ++j) { 
 	    // search a window (i, j)
-	    i = max(i, idx[s[j]] + 1); // i always the maximum non-repeating index
+	    i = max(i, idx[s[j]] + 1); // i always the maximum non-repeating index of current char
 	    // notice that the maximum length before i is store at ans
 	    ans = max(ans, j - i + 1); // get the current ans
 	    idx[s[j]] = j;  // update the last indies of current character
