@@ -3,6 +3,7 @@
  * Medium
  * Shuo Feng
  * 2021.8.25
+ * Last edited at 2021.9.14
  */
 
 /*
@@ -29,6 +30,7 @@ public:
         if (size < 1) return 0;
 
         vector<int> max_size(size, 0);
+        
         for (int i = 0; i < size; ++i) {
             max_size[i] = 1;  // Initial case of each points
 
@@ -45,8 +47,61 @@ public:
         return p;
     }
 };
-
+ea
 
 /*
- * Solution 2
+ * Solution 2: Dichotomy and Greedy.
+ * 2021.9.24
+ *   Record numbers in " nums " from small to large to a array, in order to storage the most numbers, each number in array
+ *  needs to be as small as possible .
+ *
+ *   Use " Length[i] " to storage the maximum number of increasing subsequence in size i, creat this array start with len 1 (length[1]), 
+ *  compare with " nums " from head to tail, if nums[x] bigger than the maximum value in " Length ", add nums[x] to the place
+ *  after " Length[len] " and increase len, when nums[x] is smaller, find the first element in " Length " which is smaller than nums[x]
+ *  and replace the element after it as nums[x].
+ *
+ *   As the result, the final len is the size of longest increasing subsequence, the " Length " does not necessarily storage the longest 
+ *  increasing subsequence, but it`s no matter.
+ * 
  */
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int size = nums.size();
+        if (size == 0) return 0;
+        
+        int len = 1; // Begin with size 1.
+        vector <int> Length(size + 1, 0);
+        Length[len] = nums[0]; // Starting situation.
+
+        for (int i = 1; i < size; ++i) {
+        
+            // Only increase len when add new element.
+            if (nums[i] > Length[len]) {
+                len += 1;
+                Length[len] = nums[i];
+
+            }
+            else {
+                int pos = 0;
+                int Left = 1;
+                int Right = len;
+                while (Left <= Right) {
+                    int mid = (Left + Right) / 2;
+                    
+                    // Find the smaller one, as far back as possible.
+                    if (Length[mid] < nums[i]) {
+                        pos = mid;
+                        Left = mid + 1;
+                    }
+                    else
+                        Right = mid - 1;
+                }
+                // Length[pos] < nums[i], Length[pos + 1] is the one to change.
+                Length[pos + 1] = nums[i];
+            }
+        }
+        return len;
+    }
+};
