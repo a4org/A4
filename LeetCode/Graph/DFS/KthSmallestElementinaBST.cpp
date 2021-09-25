@@ -3,6 +3,7 @@
  * Medium
  * Shuo Feng
  * 2021.8.26
+ * Last edited at 2021.9.25
  */
 
 #include<iostream>
@@ -22,7 +23,7 @@ struct TreeNode {
 
 /*
  * Solution 1: Dfs
- *   Inorder traverse the tree , due to the BST the number we get is ascending, only return the kth number.
+ *   Inorder traverse the tree , due to the feature of BST the number we get is ascending, only return the kth number.
  *
  *   Something to notice: to count we have to use a variate outside of traversal( avoid recall ).
  */
@@ -40,7 +41,9 @@ public:
         if (root == nullptr)
             return;
 
+        // In-order.
         dfs(root->left);
+        // When k = 0, this number is the Kth smallest element.
         if (--kk == 0) {
             num = root->val;
             return;
@@ -52,7 +55,7 @@ public:
 
 /*
  * Solution 2:
- *   Same as solution 1, but use a array to save the result of traversal, the " k- 1 " number is the one we need.
+ *   Same as solution 1, but use a array to save the result of traversal, the " k- 1 " number is the one we need(begin with 0).
  */
 
 class Solution {
