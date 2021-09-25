@@ -7,15 +7,23 @@
  */
 
 /*
- * Same as Cources Schedule i
+ * Same as Courses Schedule i
  * Topological Sort
  *
- * A topological sorting is an ordering of the nodes in a directed graph 
- * where for each directed edge from node A to node B, 
- * node A appears before node B in the ordering
- * 
- * Note: Topological ordering are not unique
+ * A Topological Ordering is an ordering of the nodes in a directed graph
+ * where for each directed edge from node A to node B, node A appears before node B in the the ordering
+ *
+ * The Topological Sort algorithm can find a topological ordering in O(V+E) time
+ *
+ * Note: 
+ * 1. Topological ordering are NOT unique
+ * 2. Only Directed Acyclic Graph(DAG) has a valid topological ordering (no cycle)
  */
+
+/* Revision
+ * $1 2021.9.25 Jiawei Wang
+ */
+
 
 #include <iostream>
 #include <vector>
@@ -60,11 +68,12 @@ public:
 
 	visited[curr] = 1; // mark it as visited (current dealing with)
 	for (int ver : this->graph[curr]) {
-	    // graph[curr] contains the child of curr (the cources after curr)
+	    // graph[curr] contains the child of curr (the courses after curr)
 	    if (this->dfs(ver, visited)) {
 		return true;
 	    }
 	}
+	// once there are no reachable courses of curr, means curr is not a premise of any other courses
 	this->Stack.push_back(curr);
 	visited[curr] = 2; // mark it as finished
 	return false;

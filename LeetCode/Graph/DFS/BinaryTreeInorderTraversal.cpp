@@ -48,6 +48,7 @@ private:
     }
 
     // #2 BFS Iteration
+    // check each node instead of subtree in dfs
     vector<int> inorderTraversal2(TreeNode* root) {
 	vector<int> ans;
 	stack<TreeNode*> stk;
@@ -55,7 +56,7 @@ private:
 	while (!stk.empty() || root != nullptr) {
 	    while (root != nullptr) {
 		stk.push(root);
-		root = root->left;
+		root = root->left; // low-left corner
 	    }
 	    root = stk.top();
 	    stk.pop();
