@@ -3,6 +3,7 @@
  * Medium
  * Shuo Feng
  * 2021.9.16
+ * Last edited at 2021.9.26
  */
 
 #include<iostream>
@@ -13,7 +14,17 @@ using namespace std;
 
 /*
  * Solution: Backtracking
- *
+ *   See each combination as a tree.
+ *   For example, if digits = "23": 
+ *                                                   null 
+ *                                    /               |               \
+ * Combination we already have:     a                 b                 c     | If we already have "a", when we select (1)'d' as the next letter, the combination is complete,
+ *                                / | \             / | \             / | \   | after that what we should consider is other combination, in this phase, we need only back to "a",
+ * Next letter we can select:    d  e  f           d  e  f           d  e  f  | and select other letter (2)'e', a new combination is formed.
+ * Selected place:              (1)(2)(3)                                     |
+ * Combination we get            ad ae af          bd be bf          cd ce cf |
+ *                                                                            |
+ *  result: ["ad","ae","af","bd","be","bf","cd","ce","cf"].
  */
 
 
@@ -42,18 +53,23 @@ public:
         Combina(digits, combination, 0);
         return Combinations;
     }
-    void Combina(string digits, string combination, int size) {
+    
+    //explanation:( digit         , combination we already have , size of this ←─ combination).     
+    void  Combina ( string digits , string combination          , int size                   ) {
+        
+        // Collect combination when it`s length meets requirements(meet digits size).
         if (digits.size() == size) {
             Combinations.push_back(combination);
         }
+        
         else {
-            char num = digits[size];
+            char num = digits[size];               // Start with place 'size + 1' in digits, because a 'size'_length combination is already formed. 
             const string letters = table.at(num);  // Letters related to number " num ".
 
             for (int i = 0; i < letters.size(); ++i) {
-                combination.push_back(letters[i]);
+                combination.push_back(letters[i]); // Add next letter.
                 Combina(digits, combination, combination.size());
-                // Tracking back.
+                // Tracking back, back to previous combination.
                 combination.pop_back();
             }
         }
