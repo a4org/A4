@@ -15,7 +15,7 @@
 using namespace::std;
 
 // Player 1 can win return false
-// Translete -> find all possible Player1 score, and check wheher he can get half of the total sum score
+// Translete -> find all possible Player1 score, and check whether he can get half of the total sum score
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {
