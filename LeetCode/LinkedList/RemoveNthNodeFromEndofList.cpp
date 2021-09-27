@@ -3,6 +3,7 @@
  * Medium
  * Shuo Feng
  * 2021.8.28
+ * Last edited at 2021.9.27
  */
 
 #include<iostream>
@@ -19,10 +20,11 @@ struct ListNode {
 };
 
 /* 
- * Solution 1: double pointers
+ * Solution 1: Double Pointers
  *   Finish in one pass
- *   Use two pointers, one point( node_2 ) to the place before head node, the another one ( node_1 ) point to the Nth node
+ *   Use two pointers, one point( node_2 ) to the place before head node, the another one ( node_1 ) point to the Nth node,
  *  two pointers move tegether, when node_1 point to null pointer, the node after node_2 is the one to delete.
+ *    For example:  head = [1,2,3,4,5], n = 2.
  *
  *         ano       1       2       3       4       5
  *         ↑node_2   ↑node_1
@@ -43,20 +45,23 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode* ano_head = new ListNode(0);
+        ListNode* ano_head = new ListNode(0); // Node before head. (another_head).
         ano_head->next = head;
 
         ListNode* node_1 = head;
         ListNode* node_2 = ano_head;
         
+        // Move node_1.
         for (int i = 0; i < n; ++i) {
             node_1 = node_1->next;
         }
 
+        // Move together.
         while (node_1 != nullptr) {
             node_1 = node_1->next;
             node_2 = node_2->next;
         }
+        // Delete the node after node_2
         node_2->next = node_2->next->next;
 
         ListNode* m = ano_head->next;
