@@ -1,8 +1,9 @@
 /*
- *LeetCode 114 Flatten Binary Tree To Linked List
- *Medium
- *Shuo Feng
- *2021.7.27
+ * LeetCode 114 Flatten Binary Tree To Linked List
+ * Medium
+ * Shuo Feng
+ * 2021.7.27
+ * Last edited at 2021.9.28
  */
 
 /*
@@ -86,15 +87,19 @@ public:
     void flatten(TreeNode* root) {
         while (root != nullptr) {
             if (root->left != nullptr) {
-                //root = root-> left;
+                
                 TreeNode* next = root->left;
+                // Find the right most node of root`s left node.
                 while (next->right != nullptr) {
                     next = next->right;
                 }
+                // Replace.
                 next->right = root->right;
                 root->right = root->left;
                 root->left = nullptr;
             }
+            // Update root node.
+            // root`s right node is the left node before change.
             root = root->right;
         }
     }
