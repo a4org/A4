@@ -5,8 +5,13 @@
  * 2021.8.22
  */
 
+/* Revision
+ * $1 2021.9.28 Jiawei Wang
+ */
+
 #include <vector>
 #include <deque>
+#include <stack>
 
 using namespace::std;
 
@@ -26,7 +31,8 @@ vector<vector<int>> ans;
 
 class Solution {
 public:
-    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+    // #1 BackTracking DFS
+    vector<vector<int>> pathSum1(TreeNode* root, int targetSum) {
 	dfs(root, targetSum);
 	return ans;
     }
@@ -37,7 +43,6 @@ public:
 	} else {
 	    targetSum -= root->val;
 	}
-
 
 	current.push_back(root->val);
 
@@ -50,25 +55,33 @@ public:
 		ans.back().push_back(s);
 	    }
 	}
-	current.pop_back();
+	// BackTracking
+	current.pop_back(); // pop root->val (Key statement of BackTracking)
     }
 
-    void dfs2(TreeNode* root, int targetSum) {
-	// using vector
-	if (root == nullptr) {
-	    return;
-	} else {
-	    targetSum -= root->val;
-	}
-
-	tmp.push_back(root->val);
-
-	dfs(root->left, targetSum);
-	dfs(root->right, targetSum);
-
-	if (root->right == nullptr && root->left == nullptr && targetSum == 0)  {
-	    ans.push_back(tmp);
-	}
-	tmp.pop_back();
+    // #2 Classic DFS (Storage pressure)
+    vector<vector<int>> pathSum2(TreeNode* root, int targetSum) {
+        if (root == nullptr) return {};
+        vector<vector<int>> ans;
+        dfs(root, {}, 0, targetSum, ans);
+        return ans;
+    }   
+    
+    void dfs(TreeNode* node, vector<int> curr, int currVal, int targetSum, vector<vector<int>>& ans) {
+        currVal += node->val;
+        curr.push_back(node->val); // curr vector
+        if (node->left == nullptr && node->right == nullptr && currVal == targetSum) {
+            // Termination Condition
+            ans.push_back(curr);
+        } else {
+            if (node->left != nullptr) {
+                dfs(node->left, curr, currVal, targetSum, ans);
+            }
+                
+            if (node->right != nullptr) {
+                dfs(node->right, curr, currVal, targetSum, ans);
+            }
+        }
     }
+
 };

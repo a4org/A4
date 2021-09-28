@@ -28,7 +28,7 @@ public:
 	keyboard[8] = "tuv";
 	keyboard[9] = "wxyz";
 
-	string curr;
+	string curr; // global variable curr
 	vector<string> ans;
 	dfs(digits, keyboard, 0, curr, ans);
 	return ans;
@@ -63,6 +63,7 @@ public:
     }
 
 private:
+    // BackTracking DFS
     void dfs(const string& digits, 
 	    const vector<string>& keyboard,
 	    int l, string& curr, vector<string>& ans) {
@@ -79,5 +80,6 @@ private:
 	    curr.pop_back();
 	}
     }
+    // Hard to use Classic DFS (We do not get the value of root)
 };
 

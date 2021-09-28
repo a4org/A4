@@ -5,6 +5,10 @@
  * 2021.8.23
  */
 
+/* Revision
+ * $1 2021.9.28 Jiawei Wang
+ */
+
 #include <vector>
 
 using namespace::std;
@@ -19,6 +23,7 @@ struct TreeNode {
  };
 class Solution {
 public:
+    // DFS + DP
     int longestUnivaluePath(TreeNode* root) {
 	if (root == nullptr) return 0;
 	int ans = 0;
@@ -39,7 +44,9 @@ public:
 	if (root->right && root->val == root->right->val) pr = r + 1;
 
 	*ans = max(*ans, pl + pr); // the ans must contain both left and right (just update ans each dfs recursion)
+	// ans for the curr node
 
+	// but we can only choose one side to return
 	return max(pr, pl);  // but each time we only need to return the longest side
     }
 };
