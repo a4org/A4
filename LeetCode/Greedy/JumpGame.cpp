@@ -3,12 +3,12 @@
  * Medium
  * Shuo Feng
  * 2021.8.4
- * Last edited at 2021.9.3
+ * Last edited at 2021.9.3 / 2021.10.3
  */
 
 
 /*
- *   Solution 1
+ *   Solution 1:
  *  If 'nums' not included '0'(apart from last index), the last index can be reached.
  *  When there`s '0' in 'nums', to reach the last index ,indexes before '0' should be able to reach the index after '0'.
  */
@@ -53,7 +53,7 @@ public:
 
 
 /*
- *  Solution 2, the better way.
+ *  Solution 2 Dp.
  * Record the most steps, and update in real time.,find the steps that can reach the last index. 
  */
 
@@ -76,5 +76,32 @@ public:
             if(step>= nums.size()- 1) return true; 
         }
     return false;
+    }
+};
+
+/*
+ * Solution3: 
+ *   The better way
+ *   Set a point named 'end' place at last number.
+ *   Check from back to front, if a index is able to reach 'end', change 'end' as the index.
+ *   When 'end' located at the first index, we can reach the last index.
+ */
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int size = nums.size();
+        if(size == 1) return true;
+        
+        int end = size - 1;
+        for(int i = end; i >= 0; --i) {
+            if(nums[i] >= end - i){
+                end = i;
+            }
+        }
+        
+        // Condition of able to reach the last index.
+        if(end == 0) return true; 
+        return false;
     }
 };
