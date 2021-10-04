@@ -5,6 +5,12 @@
  * 2021 8.24
  */
 
+/* Revision
+ * $1 2021.10.4 Jiawei Wang
+ * Recursion -> when a statement in a funcion calls itself repeatedly
+ * iteration -> when a loop repeatedly excutes until the controlling condition becomes false
+ */
+
 #include <vector>
 
 using namespace::std;
