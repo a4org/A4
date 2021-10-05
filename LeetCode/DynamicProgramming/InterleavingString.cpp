@@ -19,9 +19,7 @@ using namespace::std;
 
 // #1 BFS Search
 /*
-
    s1 = aab  s2 = abc  s3 = aaabcb
-
    o -- a -- o -- b -- o -- c -- o
    |         |         |         |
    a         a         a         a
@@ -35,14 +33,12 @@ using namespace::std;
    b         b         b         b
    |         |         |         |
    o -- a -- o -- b -- o -- c -- o
-
    if we can move from the top-left corner to the bottom-right corner by go through the s3
    Then we can say s3 can be represented by interleaving s1 and s2
    like the 'x' route below:
-
    x -- a -- o -- b -- o -- c -- o
    |         |         |         |
-   a         a         a         a
+   a         a        a         a
    |         |         |         |
    o -- a -- x -- b -- o -- c -- o
    |         |         |         |
@@ -53,9 +49,7 @@ using namespace::std;
    b         b         b         b
    |         |         |         |
    o -- a -- o -- b -- o -- c -- x
-
    time complexity : O(mn) (go through all chessboard)
-
 */
 
 // #2 DP Table
@@ -64,7 +58,6 @@ using namespace::std;
    Basic idea: 
    Whether s1, s2 and s3 satisfy the interleaving string, 
    just depend on whether their one less character state meets the interleaving string property.
-
    time complexity : O(mn)
 */
 
@@ -159,5 +152,4 @@ int main() {
     if (Sol.isInterleave2("aabcc", "dbbca", "aadbbbaccc")) cout << "true" << endl;
     if (Sol.isInterleave2("", "", "")) cout << "true" << endl;
     return 0;
-}
-
+} 
