@@ -1,5 +1,5 @@
 /* 
- * LeetCode 79 Word Seach
+ * LeetCode 79 Word Search
  * Medium
  * Jiawei Wang
  * 2021.10.7
