@@ -5,6 +5,10 @@
  * 2021.8.19
  */
 
+/* Revision:
+ * $1 2021.10.11 Jiawei Wang
+ */
+
 #include <vector>
 
 using namespace::std;
@@ -20,7 +24,7 @@ struct TreeNode {
 
 class Solution {
 public:
-    // DP + DFS
+    // #1 DP + DFS
     // c <-- (2, 3)
     //  \
     //   a <- (1, 2)
@@ -30,7 +34,15 @@ public:
 	return dfs(root).first;
     }
 
+    // #2 DFS
+    int diameterOfBinaryTree2(TreeNode* root) {
+	ans = 0;
+	dfs2(root);
+	return ans;
+    }
+
 private:
+    int ans;
     pair<int, int> dfs(TreeNode* root) {
 	// (diameter, depth)
 	if (root == NULL) {
@@ -47,5 +59,14 @@ private:
 	int diam = max({left.first, right.first, left.second + right.second}); 
 	// depth also the maximum depth till current node
 	return {diam ,max(left.second, right.second) + 1};
+    }
+
+    int dfs2(TreeNode* root) {
+	// return longest side
+	if (!root) return -1;
+	int l = dfs2(root->left) + 1;
+	int r = dfs2(root->right) + 1;
+	ans = max(ans, l + r); // update ans
+	return max(l, r);
     }
 };
