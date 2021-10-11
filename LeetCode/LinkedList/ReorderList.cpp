@@ -35,22 +35,25 @@ public:
             fast = fast->next->next;
             slow = slow->next;
         }
-        ListNode* Node = slow->next;
-        slow->next = nullptr;  // Cut
+        ListNode* Node = slow->next; // The head node of second list.
+        slow->next = nullptr;        // Cut
 
-        // The new head after reverse.
+        // The new head 2 after reverse.
         ListNode* head_2 = reverseList(Node);
   
         // Storage the node after.
         ListNode* aft_1 = new ListNode(0);
         ListNode* aft_2 = new ListNode(0);
+        
         // Merage two list in specific way
         while (head != nullptr && head_2 != nullptr) {
             
             // Update.
+            // Record the node after. 
             aft_1 = head->next;
             aft_2 = head_2->next;
 
+            // Connect alternately.
             head->next = head_2;
             head = aft_1;
 
@@ -71,7 +74,7 @@ private:
             Aft = preNode;
             preNode = Next;
         }
-        // Return the new head node.
+        // Return the new head node after reverse.
         return Aft;
     }
 };
