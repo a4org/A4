@@ -5,6 +5,10 @@
  * 2021 9.1
  */
 
+/* Revision
+ * $1 2021.10.14 Jiawei Wang
+ */
+
 /* #1 DP
  * Time Complexity: O(nlogn)
  * Example:
@@ -49,8 +53,9 @@ public:
 	    for (int q = 1; q <= sqrt(i); q++) {
 		// dp --> consider every possible cases
 		dp[i] = min(dp[i], dp[i-q*q]+1); // key part
+		// Try each cases:
 		// every target number is obtained from other smaller number Plus one perfect square number
-		// if we keep all previous(smaller) dp has this property, then we can easilt get the current dp[i]
+		// if we keep all previous(smaller) dp has this property, then we can easily get the current dp[i]
 		// by just looping all different cases(minus perfect square numbers)
 	    }
 	}
@@ -79,7 +84,12 @@ public:
     }
 
     // #2 BFS
-    // Shortest -> BFS
+    // Shortest Path -> BFS
+    // Example: n = 96
+    //			0                       ans = 0
+    //	 1  4  9  16  25  36  49  64  72  81    ans = 1
+    //	 ... 
+    //
     int numSquares3(int n) {
 	if (n <= 0) return 0;
 
@@ -111,9 +121,9 @@ public:
 		    // for each child node in this node
 		    if (tmp + s == n) return ans; // get the target (BFS shortest path)
 		    else if ((tmp + s < n) && (dp[tmp + s] == 0)) {
-			// if dp[tmp + s] means this node we've already visited before or in this layer
+			// we haven't meet this node before
 			dp[tmp+s] = ans;
-			searchQ.push(tmp+s);
+			searchQ.push(tmp+s); // next layer
 		    }
 		    else if (tmp + s > n) {
 			// we don't need to consider the nodes which are greater than n
