@@ -67,7 +67,7 @@ private:
 	TreeNode* root = new TreeNode(root_value);
 	id++;
 	root->left = helper(preorder, id, root_value);
-	root->right = helper(preorder, id, limit);
+	root->right = helper(preorder, id, limit); // prev root value (grandpa)
 	return root;
     }
 };

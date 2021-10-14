@@ -5,6 +5,11 @@
  * 2021.9.12
  */
 
+/* Revision
+ * $1 2021.10.13 Jiawei Wang
+ * grandpa (LeetCode 1008)
+ */
+
 #include <vector>
 #include <stack>
 using namespace::std;
