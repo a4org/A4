@@ -24,23 +24,25 @@ struct TreeNode {
 
 class Solution {
 public:
-    // BFS
-    int maxDepth1(TreeNode* root) {
-	vector<TreeNode*> Curr, Next;
-	int depth = 0;
-
-	while (Curr.empty()) {
-	    depth++;
-	    for (auto node : Curr) 
-		// each child node in this layer
-		Next.push_back(node);
-
-	    Curr.swap(Next);
-	    Curr.clear();
-	}
-	return depth;
+    int maxDepth(TreeNode* root) {
+        if (!root) return 0;
+        if (!root->left && !root->right) return 1;
+        vector<TreeNode*> Curr;
+        vector<TreeNode*> Next;
+        int depth = 0;
+        Curr.push_back(root);
+        
+        while (!Curr.empty()) { // still have child node
+            depth++;
+            for (TreeNode* node : Curr) {
+                if (node->left) Next.push_back(node->left);
+                if (node->right) Next.push_back(node->right);
+            }
+            Curr.swap(Next);
+            Next.clear();
+        }
+        return depth;
     }
-
     // DFS
     // Key: left and right big subtree (itearation)
     int maxDepth2(TreeNode* root) {
