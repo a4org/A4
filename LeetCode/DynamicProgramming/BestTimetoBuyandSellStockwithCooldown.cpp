@@ -3,6 +3,7 @@
  * Medium
  * Shuo Feng
  * 2021.10.15
+ * Last edited at 2021.10.16
  */
 
 #include<iostream>
@@ -49,5 +50,38 @@ public:
         }
 
         return max(max(dp[days - 1][0], dp[days - 1][1]), dp[days - 1][2]);
+    }
+};
+
+
+/*
+ * Solution 1.5 Dp
+ *   Describe the maximum prodit by three status:
+ *     buy:  buy a stock.
+ *     sell: sell a stock.
+ *     cool: the day after selling a stock
+ */
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int days = prices.size();
+
+        int buy = 0 - prices[0];
+        int sell = 0;
+        int cool = 0;
+
+        for (int i = 1; i < days; ++i) {
+            // Record the status of day i-1.
+            int buy_2 = buy;
+            int sell_2 = sell;
+            int cool_2 = cool;
+
+            // Update 
+            buy  = max(buy_2 , cool_2 - prices[i]);
+            sell = max(buy_2 , buy_2  + prices[i]);
+            cool = max(cool_2, sell_2);
+        }
+        return sell // Only think about sell.
     }
 };
