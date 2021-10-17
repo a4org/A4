@@ -7,6 +7,7 @@
 
 /* Revision
  * $1 2021.9.28 Jiawei Wang 
+ * $2 2021.10.17 Jiawei Wang 
  */
 
 #include <vector>
@@ -21,72 +22,68 @@ using namespace::std;
      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
-
 class Solution {
 public:
-    vector<int> dp; 
-    // Key: understand the vector dp 
-    // dp[i] only store the sum from 0 to ith elements
-    int currSum = 0;
-    int num = 0;  // return value
-
-    // #1 DP + DFS
-    int pathSum(TreeNode* root, int targetSum) {
-	dfs(root, targetSum);
-	return num;
+    // avoid using global varibles (store in global memory)
+    // vs local variables (store in register or stack(L1 cache))
+    //#1  DP (number of roots) + DFS
+    int pathSum1(TreeNode* root, int targetSum) {
+        vector<int> dp; // dp[i] => the target sum from root to index i in this path (backtracking dp)
+        int ret = 0;
+        int currentSum = 0;
+        
+        helper(dp, root, targetSum, currentSum, ret);
+        
+        return ret;
+    }
+private:
+    void helper(vector<int>& dp, TreeNode* root, int targetSum, int& currentSum, int& ret) {
+        if (root == nullptr) return;
+        
+        currentSum += root->val;
+        dp.push_back(currentSum);
+        
+        // each node can only be treat as "leaf node" once
+        for (int i = 0; i < dp.size(); i++) {
+            int j = dp.size()-1; // curr left node;
+            if (dp[j] - dp[i] == targetSum && i != j) ret++;
+        }
+        
+        if (currentSum == targetSum) ret++;
+        
+        helper(dp, root->left, targetSum, currentSum, ret);
+        helper(dp, root->right, targetSum, currentSum, ret);
+        
+        currentSum -= root->val;
+        dp.pop_back();
     }
 
-    void dfs(TreeNode* root, int targetSum) {
-	if (root == nullptr) return;
-	else {
-	    currSum += root->val;
-	    dp.push_back(currSum);
-	}
-
-	if (currSum == targetSum) num++;
-	for (int j = 0; j < dp.size(); j++) { // all subpath
-	    int i = dp.size() - 1; // ith dp (curr)
-	    int tmp = dp[i] - dp[j];
-	    if (tmp == targetSum && i != j) {
-		// avoid 0
-		num++;
-	    }
-	}
-
-	dfs(root->left, targetSum);
-	dfs(root->right, targetSum);
-
-	// back to its parent nodes
-	// guarantee the dp property (Understand)
-	currSum -= root->val;
-	dp.pop_back();
-    }
-
-    int num2 = 0; // Path num.
+public:
     // #2 DFS
     int pathSum2(TreeNode* root, int targetSum) {
-        traversal(root, targetSum);
+	int num2 = 0;
+        traversal(root, targetSum, num2);
         return num2;
     }
     
     // For each node, Treat it as the starting node and then check the path after it.
-    void traversal(TreeNode* root, int targetSum) {
+    void traversal(TreeNode* root, int targetSum, int& num2) {
 	// traversal just for iteration
         if (root) {
-            Find_Path(root, targetSum);
-            traversal(root->left, targetSum);
-            traversal(root->right, targetSum);
+            Find_Path(root, targetSum, num2);
+            traversal(root->left, targetSum, num2);
+            traversal(root->right, targetSum, num2);
         }
     }
-    void Find_Path(TreeNode* root, int targetSum) {
-	// set root as the starting node, and then explore all pathes after it
+    void Find_Path(TreeNode* root, int targetSum, int& num2) {
+	// set root as the starting node, and then explore all pathes after it one by one
         if (root == nullptr)
             return;
         else
             targetSum -= root->val;
         if (targetSum == 0) 
             ++num2;        
-        Find_Path(root->left, targetSum);
-        Find_Path(root->right, targetSum);
+        Find_Path(root->left, targetSum, num2);
+        Find_Path(root->right, targetSum, num2);
     }
 };

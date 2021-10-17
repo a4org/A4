@@ -7,6 +7,7 @@
 
 /* Revision
  * $1 2021.9.28 Jiawei Wang
+ * $2 2021.10.17 Jiawei Wang
  */
 
 #include <vector>
@@ -32,56 +33,57 @@ vector<vector<int>> ans;
 class Solution {
 public:
     // #1 BackTracking DFS
+    // We passing a gloal variable or passing reference current for iteration 
+    // Reduce the storiage pressure
     vector<vector<int>> pathSum1(TreeNode* root, int targetSum) {
-	dfs(root, targetSum);
-	return ans;
+        vector<vector<int>> ret;
+        vector<int> current;
+        helper1(root, ret, current, targetSum);
+        
+        return ret;
+    }
+private:
+    void helper1(TreeNode* root, vector<vector<int>>& ret, vector<int>& current, int targetSum) {
+        if (root == nullptr) return;
+        
+        targetSum -= root->val;
+        current.push_back(root->val);
+        
+        if (targetSum == 0 && root->left == nullptr && root->right == nullptr) {
+            // Termination Condition
+            ret.push_back(current);
+        }
+        
+        helper1(root->left, ret, current, targetSum);
+        helper1(root->right, ret, current, targetSum);
+        
+        current.pop_back(); // remember pop back each layers
     }
 
-    void dfs(TreeNode* root, int targetSum) {
-	if (root == nullptr) {
-	    return;
-	} else {
-	    targetSum -= root->val;
-	}
-
-	current.push_back(root->val);
-
-	dfs(root->left, targetSum);
-	dfs(root->right, targetSum);
-
-	if (root->right == nullptr && root->left == nullptr && targetSum == 0)  {
-	    ans.push_back({});
-	    for (auto s : current) {
-		ans.back().push_back(s);
-	    }
-	}
-	// BackTracking
-	current.pop_back(); // pop root->val (Key statement of BackTracking)
-    }
-
+public:
     // #2 Classic DFS (Storage pressure)
     vector<vector<int>> pathSum2(TreeNode* root, int targetSum) {
-        if (root == nullptr) return {};
-        vector<vector<int>> ans;
-        dfs(root, {}, 0, targetSum, ans);
-        return ans;
-    }   
-    
-    void dfs(TreeNode* node, vector<int> curr, int currVal, int targetSum, vector<vector<int>>& ans) {
-        currVal += node->val;
-        curr.push_back(node->val); // curr vector
-        if (node->left == nullptr && node->right == nullptr && currVal == targetSum) {
-            // Termination Condition
-            ans.push_back(curr);
-        } else {
-            if (node->left != nullptr) {
-                dfs(node->left, curr, currVal, targetSum, ans);
-            }
-                
-            if (node->right != nullptr) {
-                dfs(node->right, curr, currVal, targetSum, ans);
-            }
-        }
+        vector<vector<int>> ret;
+        
+        helper2(root, ret, {}, targetSum);
+        
+        return ret;
     }
 
+private:
+    void helper2(TreeNode* root, vector<vector<int>>& ret, vector<int> current, int targetSum) {
+        if (root == nullptr) return;
+        
+        targetSum -= root->val;
+        current.push_back(root->val);
+        
+        if (targetSum == 0 && root->left == nullptr && root->right == nullptr) {
+            // Termination Condition
+            ret.push_back(current);
+            return;
+        }
+        
+        helper2(root->left, ret, current, targetSum);
+        helper2(root->right, ret, current, targetSum);
+    }
 };
