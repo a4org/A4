@@ -1,3 +1,12 @@
+/* 
+ * LeetCode 2039 The Tine When the Network Becomes Idle
+ * Medium
+ * Jiawei Wang
+ * 2021.10.17
+ */
+
+// LeetCode Biweekly Contest 63 #3
+
 #include <vector>
 #include <iostream>
 
