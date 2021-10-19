@@ -1,5 +1,5 @@
 /*
- * LeetCode 496 Next Greater Element
+ * LeetCode 496 Next Greater Element i
  * Easy
  * Jiawei Wang
  * 2021.10.19
