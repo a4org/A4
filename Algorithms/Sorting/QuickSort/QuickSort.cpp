@@ -4,6 +4,7 @@
 using namespace std;
 
 int Partition(vector<int> &A, int p, int q) {
+    // (p, i) (i+1, j)
     int x = A[p];
     int i = p;
     for (int j = p + 1; j <= q; j++) {
