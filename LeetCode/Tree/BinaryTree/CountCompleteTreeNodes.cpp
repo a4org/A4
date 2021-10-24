@@ -100,14 +100,16 @@ public:
 
 	int h1 = findLeftDepth(root->left);
 	int h2 = findRightDepth(root->left);
-	int h3 = findLeftDepth(root->right);
+	int h4 = findRightDepth(root->right);
+
+	if (h4 == h1) return pow(2, h1) + pow(2, h4) - 1; // it is a full tree
 
 	if (h1 == h2) {
 	    // left subtree is a full binary tree
 	    return pow(2, h1) + countNodes(root->right); // + right count
 	} else {
 	    // right subtree is a full binary tree
-	    return pow(2, h3) + countNodes(root->left);  // + left count
+	    return pow(2, h4) + countNodes(root->left);  // + left count
 	}
     }
 
