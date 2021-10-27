@@ -47,7 +47,7 @@ void HeapSort(vector<int> &A) {
 
 
 int main() {
-    vector<int> A = {1, 4, 2, 9, 5, 3, 7, 6, 10, 24, 18};
+    vector<int> A = {1, 4, 2, 9, 5, 3, 7, 6, 10, 24, 18, 33, 12, 3, 88};
     HeapSort(A);
 
     for (int a : A) {
