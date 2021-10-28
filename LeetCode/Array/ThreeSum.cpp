@@ -5,6 +5,10 @@
  * 2021.8.25
  */
 
+/* Revision
+ * $1 2021.10.28 Jiawei Wang
+ */
+
 #include <vector>
 #include <algorithm>
 #include <set>
@@ -24,7 +28,7 @@ public:
 	// #2 using set to store ans -- (will only have one (-1, -1, 2) )
 	sort(begin(nums), end(nums));
 	const int n = nums.size();
-	set<vector<int>> ans;
+	set<vector<int>> ans; // unordered_set did not support vector store in it
 
 	for (int i = 0; i < n; ++i) 
 	    for (int j = i + 1; j < n; ++j) 
@@ -45,7 +49,7 @@ public:
 	for (int x : nums) ++c[x];
 	vector<vector<int>> ans; // we do not use set here  (1)
 	for (int i = 0; i < n; ++i) {
-	    if (i && nums[i] == nums[i - 1]) continue; // (1)
+	    if (i && nums[i] == nums[i - 1]) continue; // (1) -> each position can only have one same element
 	    for (int j = i + 1; j < n; ++j) {
 		if (j - 1 != i && nums[j] == nums[j - 1]) continue; // (1)
 		const int t = 0 - nums[i] - nums[j]; // nums[i] <= nums[j] <= nums[k];
@@ -68,7 +72,10 @@ public:
 	const int n = nums.size();
 	vector<vector<int>> ans;
 	for (int i = 0; i < n - 2; ++i) {
+	    // for each negative i
+
 	    if (nums[i] > 0) break; // we can't have three positive numbers
+	    // find the first negative number nums[i]
 	    if (i > 0 && nums[i] == nums[i - 1]) continue; // (1)
 	    int l = i + 1;
 	    int r = n - 1;
