@@ -40,9 +40,10 @@ private:
 
 	// nums keeps same, we always change the sortedNums, divide and merge them together
 	for (int i = start; i <= mid; i++) {
-	    // iter represents the position of nums[i] when insert into sorted vector [mid+1, end]
-	    auto iter = lower_bound(sortedNums.begin() + mid + 1, sortedNums.begin() + end + 1, nums[i]); 
-	    counts[i] += iter - (sortedNums.begin() + mid + 1); // Ranking [mid+1, end]
+	    // iter represents the position of nums[i] in [begin, mid] when inserting into sorted vector [mid+1, end]
+	    auto iter = lower_bound(sortedNums.begin() + mid + 1, sortedNums.begin() + end + 1, nums[i]); // [mid+1, end+1)
+	    // must be sorted then we can use lower_bound to binary search
+	    counts[i] += iter - (sortedNums.begin() + mid + 1); // Ranking in [mid+1, end]
 
 	    // inside both intervals [start, mid] [mid+1, end], there counts are updated
 	    // We only need to update [start, mid] from [mid+1, end]
@@ -50,7 +51,7 @@ private:
 	}
 
 	// sort(sorted.begin()+a, sorted.begin()+b+1); // too long 
-	// just need to merge them since both of two vectors are already sorted
+	// just need to merge them since both of two vectors are already sorted O(N)
 	
 	vector<int> temp(end - start + 1); // to store the merged vector from start to end
 	int i = start, j = mid+1, p = 0;
