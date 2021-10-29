@@ -74,7 +74,7 @@ public:
 	// dfs search (just like Word Search i)
 	for (int i = 0; i < m; i++) {
 	    for (int j = 0; j < n; j++) {
-		// for each start point
+		// for each start points
 		TrieNode* node = root; // root is the trie data structure that we built before
 		string word;
 		visited[i][j] = 1;
