@@ -20,7 +20,7 @@ private:
     // Four directions.
     vector<vector<int>> directions = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
   
-    // 'passed' : empty sqares we have passed. 'empty': quantity of empty squares.
+    // 'passed' : nums of empty sqares we have passed. 'empty': quantity of empty squares.
     void dfs(vector<vector<int>>& grid, vector<int>& path, int x, int y, int empty, int passed) {
         int row = grid.size();
         int col = grid[0].size();
