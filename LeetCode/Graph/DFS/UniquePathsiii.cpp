@@ -43,9 +43,9 @@ private:
         path.push_back((col + 1) * x + y + 1);
         grid[x][y] = -1;
         
-        // Search in four(or three) directions.
+        // Search in four directions.
         for (int i = 0; i < 4; ++i) {
-            int nx = x + directions[i][0];
+            int nx = x + directions[i][0]; // New x.
             int ny = y + directions[i][1];
             if (nx >= 0 && nx < row && ny >= 0 && ny < col) {
                 dfs(grid, path, nx, ny, empty, passed + 1);
@@ -63,7 +63,7 @@ public:
         int col = grid[0].size();
 
         // Count begin with 1 
-        // Explain: each time we move, 'passed' add one(line 49), include ending square, so in the end, 'passed' = quantity of empty squares + 1.
+        // Explain: each time we move, 'passed' add one(line 51), include moving to ending square, so in the end, 'passed' = quantity of empty squares + 1.
         int empty = 1;  // Quanlity of empty squares.
         pair<int, int> begin;  // Beginning square.
         
