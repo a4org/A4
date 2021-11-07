@@ -27,6 +27,12 @@
  *      
  *
  */
+
+/* Revision
+ * $1 2021.11.6 
+ * Region DP
+ */
+
 #include <vector>
 
 using namespace::std;
@@ -57,6 +63,36 @@ public:
 	    }
 	}
 	return dp[0][n-1];
+    }
+
+    // Region DP:
+    // dp[i][j]: Maximum coins you can collect by bursting the ballons[i:j]
+    //
+    // {i X X X X X X X X} [k] {X X X X X X X X X j}
+    //
+    // dp[i][k-1] + dp[k+1][j] + nums[k] * nums[i-1] * nums[j+1]
+    // from small region to large region
+    int maxCoins2(vector<int>& nums) {
+	int n = nums.size();
+	if (nums.empty()) {
+	    return 0;
+	}
+	nums.insert(nums.begin(), 1);
+	nums.push_back(1);
+	vector<vector<int>> dp(n+2, vector<int>(n+2, 0)); // to store the boundary cases (Overflow)
+
+	for (int len = 1; len <= n; len++) {
+	    // for diff length of the interval size
+	    for (int i = 1; i+len-1 <= n; i++) {
+		// start point of the interval
+		int j = i + len - 1; // interval [i:j]
+		for (int k = i; k <= j; k++) {
+		    // k can be any point of this interval [i:j]
+		    dp[i][j] = max(dp[i][j], dp[i][k-1] + dp[k+1][j] + nums[k] * nums[i-1] * nums[j+1]);
+		}
+	    }
+	}
+	return dp[1][n];
     }
 };
 
