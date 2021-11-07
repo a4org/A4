@@ -55,6 +55,7 @@ public:
 	    auto sold_old = sold;
 	    // we do not need to use O(n^2 Space) with two dp[i][k] tables
 	    for (int j=1; j<=k; j++) {
+		// assume the ith day with k-th time holding/solding stock
 		// with k status
 		hold[j] = max(sold_old[j-1] - prices[i], hold_old[j]); 
 		sold[j] = max(hold_old[j] + prices[i], sold_old[j]); // Note hold_old[j] + prices[i]
