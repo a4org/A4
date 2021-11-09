@@ -27,6 +27,7 @@ private:
 	    ret.push_back(current);
 	    return;
 	}
+	// both can choose current element or not
 	helper(nums, ret, index+1, current, n);
 	current.push_back(nums[index]);
 	helper(nums, ret, index+1, current, n);

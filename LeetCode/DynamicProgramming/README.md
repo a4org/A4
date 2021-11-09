@@ -17,6 +17,7 @@ Given a sequence (array/string), each element can be considered "one day", **and
 
 * **[LC 198. House Robber (E)](HouseRobber.cpp)**
 * **[LC 213. House Robber ii (E+)](HouseRobberii.cpp)**
+* **[LC 337. House Robber iii (M+)](https://github.com/Angorithm4/Angorithm4/blob/main/LeetCode/Recursion/HouseRobberiii.cpp)**
 * **[LC 121. Best Time to Buy and Sell Stock (E+)](BestTimeToBuyAndSellStock.cpp)**
 * **[LC 123. Best Time to Buy and Sell Stock iii (M)](BestTimeToBuyAndSellStockiii.cpp)**
 * **[LC 188. Best Time to Buy and Sell Stock iv (M+)](BestTimeToBuyAndSellStockiv.cpp)**
@@ -28,7 +29,7 @@ Given a sequence (array/string), each element can be considered "one day", **and
 * **[LC 256. Paint House (E+)](PaintHouse.cpp)**
 * **[LC 265. Paint House ii (M)](PaintHouseii.cpp)**
 * **[LC 1186. Maximum Subarry Sum with One Delection (M)](MaximumSubaryyWithOneDelection.cpp)**
-* **[LC 487. Max Consecutive Ones (M-)](MaxConsecutiveOne.cpp)**
+* **[LC 487. Max Consecutive Ones (M-)](MaxConsecutiveOnes.cpp)**
 * **[LC 931. Minimum Falling Path Sum (E)](MinimumFallingPathSum.cpp)**
 * **[LC 1289. Minimum Falling Path Sum ii (M)](MinimumFallingPathSumii.cpp)**
 

@@ -10,6 +10,9 @@
  * For each house, the thief can choose rob it or not
  * To understand why #2 uses Hash ->  Why #1 has many repetitive dfs? 
  * Cannot choose this node (flag == 0) with can but do not choose this node (flag == 1)
+ *
+ * $2 2021.11.9 Jiawei Wang
+ * Using global variable and parameter ref seems like have the same speed...
  */
 
 /* #1 Normal Recursive DFS
@@ -38,6 +41,7 @@ using namespace::std;
 class Solution {
     public:
 	// #1 Normal Recursive DFS
+	// TLE 
 	int rob1(TreeNode* root) {
 	    return DFS1(root, 1);
 	}
@@ -58,37 +62,34 @@ class Solution {
 
 
 	// #2 Recursive DFS with Hash
-	unordered_map<TreeNode*, int> flag0; // flag0[TreeNode* Node] := maximum amount of money if we can't choose current node 
-	unordered_map<TreeNode*, int> flag1; // from Node to the leaf node of the tree
-
-	int rob2(TreeNode* root) {
-	    return DFS2(root, 1);
+	int rob(TreeNode* root) {
+	    unordered_map<TreeNode*, int> cann;
+	    unordered_map<TreeNode*, int> cant;
+	    return helper(root, 1, cann, cant);
 	}
 
-	int DFS2(TreeNode* node, int flag) { 
-	    if (node == NULL) return 0;
+private:
+	int helper(TreeNode* node, int can, unordered_map<TreeNode*, int>& cann, unordered_map<TreeNode*, int>& cant) {
+	    if (node == nullptr) return 0;
 
-	    if (flag == 1 && flag1.find(node) != flag1.end()) {
-		return flag1[node];
-	    }
-	    if (flag == 0 && flag0.find(node) != flag0.end()) {
-		return flag0[node];
+	    if (can && cann.find(node) != cann.end()) {
+		return cann[node];
 	    }
 
-	    int ret; // final ans
-	    if (flag == 0) {
-		// cannot choose this node
-		ret = DFS2(node->left, 1) + DFS2(node->right, 1);
-	    } else {
-		// can choose this node
-		int option1 = node->val + DFS2(node->left, 0) + DFS2(node->right, 0); // choose this node
-		int option2 = DFS2(node->left, 1) + DFS2(node->right, 1); // do not choose this node
+	    if (!can && cant.find(node) != cann.end()) {
+		return cant[node];
+	    }
+
+	    int ret = 0;
+	    if (can) {
+		int option1 = node->val + helper(node->left, 0, cann, cant) + helper(node->right, 0, cann, cant);
+		int option2 = helper(node->left, 1, cann, cant) + helper(node->right, 1, cann, cant);
 		ret = max(option1, option2);
+		cann[node] = ret;
+	    } else {
+		ret = helper(node->left, 1, cann, cant) + helper(node->right, 1, cann, cant);
+		cant[node] = ret;
 	    }
-
-	    if (flag == 1) flag1[node] = ret;
-	    if (flag == 0) flag0[node] = ret;
-
 	    return ret;
 	}
 };
