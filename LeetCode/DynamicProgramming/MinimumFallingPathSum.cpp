@@ -1,5 +1,5 @@
 /*
- * LeetCode 931 Min Cost Climbing Stairs
+ * LeetCode 931 Minimum Fallin Path Sum
  * Medium
  * Jiawei Wang
  * 2021 11.7
