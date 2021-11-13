@@ -5,6 +5,10 @@
  * 2021.10.19
  */
 
+/* Revision
+ * $1 2021.11.13 Jiawei Wang
+ */
+
 #include <vector>
 #include <stack>
 
@@ -20,9 +24,11 @@ public:
         
         for (int i = 0; i < n; i++) {
             if (Stack.empty()) Stack.push(i);
+	    // decreasing
             else if (temperatures[Stack.top()] >= temperatures[i]) Stack.push(i);
             else {
                 // deal with it
+		// find a greater
                 while (!Stack.empty() && temperatures[Stack.top()] < temperatures[i]) {
                     // Indexes
                     ret[Stack.top()] = i - Stack.top();
