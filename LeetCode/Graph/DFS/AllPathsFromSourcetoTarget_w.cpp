@@ -26,6 +26,7 @@ public:
     }
 
 private:
+    // Pass Referece! Even though you do not need to change the graph
     void helper(vvi& graph, vvi& ret, vector<int>& curr, int cn) {
 	// Do DFS
 	if (cn == graph.size()-1) {
