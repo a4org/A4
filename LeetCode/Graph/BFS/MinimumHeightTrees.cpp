@@ -6,6 +6,13 @@
  */
 
 /*
+ * Revision $1
+ * 2021.12.16 Jiawei Wang
+ * Climb from each leaf nodes (sides), when they meet
+ * we believe that this "meet" node is the target node (Max 2)
+ */
+
+/*
  * BFS From leaves
  *
  * 3  2  1
@@ -33,7 +40,7 @@ public:
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
         if (n == 1) return {0};
         vector<int> res; // result
-        vector<unordered_set<int>> nodes(n);
+        vector<unordered_set<int>> nodes(n); // node with its connected nodes
         queue<int> q; // q stores all current leaf nodes
         for (auto edge : edges) {
             nodes[edge[0]].insert(edge[1]);
@@ -45,11 +52,11 @@ public:
             if (nodes[i].size() == 1) q.push(i);
         }
         while (n > 2) { // understand this
-	    // In ay cases: there are only maximum two possible roots (1 or 2)
+	    // In any cases: there are only maximum two possible roots (1 or 2)
 	    // since 3 nodes will produce 2 leaf nodes
 	    // (1) there are no cycle in the graph 
 	    // (2) when n > 2, they are not leaf nodes
-            int size = q.size();
+            int size = q.size(); // current all leaf nodes
             n -= size;
             for (int i = 0; i < size; ++i) {
                 int t = q.front(); q.pop();
