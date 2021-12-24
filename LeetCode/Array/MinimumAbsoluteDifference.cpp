@@ -1,6 +1,6 @@
 /*
- * LeetCode 217 Kth Largest Element in an Array
- * Medium
+ * LeetCode 1200 Minimum Absolute Difference
+ * Easy
  * Jiawei Wang
  * 2021.12.20
  */
