@@ -1,3 +1,11 @@
+/*
+ * LeetCode 973 K Closest Points to Origin
+ * Medium
+ * Jiawei Wang
+ * 2021.12.26
+ */
+
+
 #include <vector>
 #include <queue>
 
