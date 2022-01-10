@@ -34,7 +34,7 @@ struct debugger
 void run_case() {
     int rooks; int size;
     cin >> size >> rooks;
-    
+
     if (rooks > (size+1)/2) {
 	cout << -1 << '\n';
 	return;
