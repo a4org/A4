@@ -63,10 +63,24 @@ public:
 
 	return ret;
     }
+
+    long long maximumSubsequenceCountii(string text, string pattern) {
+	// simple but useful
+	// try to think more, before u type anything
+        long long res = 0, cnt1 = 0, cnt2 = 0;
+
+	// if we add patten[0], the best option is to add it at the begin
+	// if we add patten[1], the best option is to add it at the end
+	// so just need to choose whether add begin or end
+	
+        for (char& c: text) {   
+            if (c == pattern[1])
+		// combine with prev patten[0]
+                res += cnt1, cnt2++;
+            if (c == pattern[0])
+                cnt1++;
+        }
+
+        return res + max(cnt1, cnt2);
+    }
 };
-
-int main() {
-    Solution* Sol = new Solution();
-
-    Sol->maximumSubsequenceCount("abdcdbc", "ac");
-}
