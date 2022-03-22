@@ -88,7 +88,6 @@ private:
 	for (auto x : adj[curr]) {
 	    LL nxt = x.first;
 	    LL len = x.second;
-
 	    total += dfs(nxt, d - len);
 	    total %= M;
 	}
