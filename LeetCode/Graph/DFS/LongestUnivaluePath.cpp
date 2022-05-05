@@ -7,6 +7,8 @@
 
 /* Revision
  * $1 2021.9.28 Jiawei Wang
+ *
+ * $2 2022.5.2  Jiawei Wang
  */
 
 #include <vector>
@@ -39,9 +41,14 @@ public:
 	int pl = 0;
 	int pr = 0;
 
+	// The meaning of pl and pr:
+	// in case that both left->val and right->val are not equal to the current value
+	// the ans should be zero
+
 	// for each node
 	if (root->left && root->val == root->left->val) pl = l + 1;
 	if (root->right && root->val == root->right->val) pr = r + 1;
+
 
 	*ans = max(*ans, pl + pr); // the ans must contain both left and right (just update ans each dfs recursion)
 	// ans for the curr node
