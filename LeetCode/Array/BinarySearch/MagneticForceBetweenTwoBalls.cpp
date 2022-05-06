@@ -1,3 +1,14 @@
+/* 
+ * LeetCode 1552 Magnetic Force Between Two Balls
+ * Medium
+ * Jiawei Wang
+ * 2022.4.22
+ */
+
+/* Revision
+ * $1 2022.5.6 Jiawei Wang
+ */
+
 #include <vector>
 #include <algorithm>
 

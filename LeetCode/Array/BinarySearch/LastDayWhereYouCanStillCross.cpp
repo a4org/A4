@@ -5,6 +5,12 @@
  * 2021.11.23
  */
 
+
+/* Revision
+ * $1 2022.5.6 Jiawei Wang
+ */
+
+
 #include <vector>
 #include <queue>
 
@@ -34,6 +40,7 @@ private:
     bool canWalk(vector<vector<int>>& cells, int row, int col, int dayAt) {
 	vector<vector<bool>> grid(row, vector<bool>(col, 0)); // the grid in the `datAt` date
 	for (int i = 0; i < dayAt; i++) {
+	    // simulate each day
 	    grid[cells[i][0]-1][cells[i][1]-1] = 1;
 	}
 	queue<pair<int, int>> bfs;
@@ -45,6 +52,7 @@ private:
 	}
 
 	while (!bfs.empty()) {
+	    // check whether it is valid (do bfs)
 	    int r = bfs.front().first, c = bfs.front().second;
 	    bfs.pop();
 	    if (r == row-1) return true;

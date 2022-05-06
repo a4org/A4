@@ -45,6 +45,7 @@ private:
 
     while (j < p.size()) {
       // char by char
+      // we want delete p[j]
       while (i < s.size() && s[i] != p[j]) {
 	i++;
       }
