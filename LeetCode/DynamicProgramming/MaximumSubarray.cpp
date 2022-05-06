@@ -7,6 +7,8 @@
 
 /* Revision
  * $1 2021.10.5 Jiawei Wang
+ *
+ * $2 2022.5.6  Jiawei Wang
  */
 
 #include <vector>
@@ -38,7 +40,7 @@ public:
 	for (int x : nums) {
 	    a += x;
 	    ans = max(ans, a); // record the ans first
-	    a = max(a, 0); // if a < 0 (the sum till now) just set it to 0 and continue
+	    a = max(a, 0);     // if a < 0 (the sum till now) just set it to 0 and continue
 	}
 	return ans;
     }

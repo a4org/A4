@@ -5,6 +5,12 @@
  * 2021.8.23
  */
 
+
+/* Revision
+ *
+ * $1 2022.5.6 Jiawei Wang
+ *
+ */
 #include <vector>
 
 using namespace::std;
@@ -23,17 +29,17 @@ public:
     // maximum subarray (53) + Longest path (687)
     // Kadane's algorithm + DFS
     int maxPathSum(TreeNode* root) {
-	// Treat each subtree as a whole tree (in each node)
 	int ans = INT_MIN;
-	dfs(root, ans);
+	helper(root, ans);
 	return ans;
     }
 
-    int dfs(TreeNode* root, int& ans) {
+    int helper(TreeNode* root, int& ans) {
 	if (!root) return 0;
-	// from bottom to top
-	int l = max(0, dfs(root->left, ans));  // maximum length of left whole subtree
-	int r = max(0, dfs(root->right, ans)); // maximum length of right whole subtree
+
+	// if less than zero, we ignore that num
+	int l = max(0, helper(root->left, ans));  // maximum length of left whole subtree
+	int r = max(0, helper(root->right, ans)); // maximum length of right whole subtree
 
 	int sum = l + r + root->val;
 	ans = max(ans, sum);
