@@ -7,6 +7,7 @@
 
 /* Revision
  * $1 2022.1.3 Jiawei Wang
+ * $2 2022.5.7 Jiawei Wang
  */
 
 #include <vector>
@@ -21,6 +22,7 @@ public:
     int lengthOfLIS(vector<int>& nums) {
 	int n = nums.size();
 	vector<int> dp(n, 1); 
+	// all cases
 	// dp[i]: the length of longest increasing subsequence for nums[0:i]
 	// ending with nums[i]
 
@@ -44,12 +46,12 @@ public:
 	vector<int> q; // longest Increasing Subsequence (LIS)
 
 	for (int x : nums) {
-	    auto pos = lower_bound(q.begin(), q.end(), x); // Binary search
-	    // find the first position that greater than x in q
+	    auto pos = lower_bound(q.begin(), q.end(), x);
+	    // find the first position that greater than x in q (using binary search)
 	    if (pos == q.end()) {
 		q.push_back(x);  // just push_back
 	    } else {
-		*pos = x; // make a "better" LIS
+		*pos = x; // make a "better" LIS (smaller)
 	    }
 	}
 	return q.size();
