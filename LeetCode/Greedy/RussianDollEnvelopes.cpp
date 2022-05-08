@@ -22,7 +22,7 @@ public:
     // sort with the width (answer must in the subsequence)
     for (int i = 0; i < envelopes.size(); i++) {
       for (int j = 0; j < i; j++) {
-	if (envelopes[i][0] < envelopes[j][0] && envelopes[i][1] < envelopes[j][1]) {
+	if (envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1]) {
 	  // envelopes[i][0] may equal to envelopes[j][0]
 	  dp[i] = max(dp[i], dp[j] + 1);
 	}
@@ -45,7 +45,7 @@ public:
     // sort with the width (answer must in the subsequence)
     for (int i = 0; i < envelopes.size(); i++) {
       for (int j = 0; j < i; j++) {
-	if (envelopes[i][1] < envelopes[j][1]) {
+	if (envelopes[i][1] > envelopes[j][1]) {
 	  // envelopes[i][0] may equal to envelopes[j][0]
 	  dp[i] = max(dp[i], dp[j] + 1);
 	}
