@@ -5,6 +5,10 @@
  * 2021.12.24
  */
 
+/* Revision
+ * $1 2022.5.10 Jiawei Wang
+ */
+
 #include <vector>
 #include <algorithm>
 
@@ -32,7 +36,7 @@ public:
 		begin = inter[0];
 		last  = inter[1];
 	    } else if (inter[0] <= last && inter[1] > last) {
-		// merge an interval
+		// just merge the interval
 		last = inter[1];
 	    } 
 	}
