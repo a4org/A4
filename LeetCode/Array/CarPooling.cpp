@@ -22,6 +22,7 @@ public:
 
     sort(diff.begin(), diff.end()); 
     // sorting on pair will consider each element
+    // will simulating a trip
 
     int num = 0;
     for (auto d : diff) {

@@ -1,3 +1,11 @@
+/*
+ * LeetCode 1109 Corporate Flight Bookings
+ * Medium
+ * Jiawei Wang
+ * 2022.5.15
+ */
+
+
 #include <vector>
 
 using namespace::std;
@@ -14,6 +22,8 @@ public:
 
     vector<int> ret;
     int total = 0;
+    // n is given and small
+    // we can use this way to replace sorting
     for (int i = 1; i <= n; i++) {
       total += reserved[i];
       ret.push_back(total);
