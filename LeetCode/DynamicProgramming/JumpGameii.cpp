@@ -5,6 +5,10 @@
  * 2021 8.11
  */
 
+/* Revision
+ * $1 2022.5.17 Jiawei Wang
+ */
+
 /*
  * #1 Greedy
  *
@@ -32,7 +36,7 @@ public:
 	return steps;
     }
 
-    // #2 DP
+    // #2 DP I
     int jump2(vector<int>& nums) {
 	int size = nums.size();
 	vector<int> jumptimes(size, INT_MAX / 2);
@@ -46,4 +50,3 @@ public:
 	return jumptimes[size-1];
     }
 };
-

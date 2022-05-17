@@ -7,6 +7,8 @@
 
 /* Revision
  * $1 2021.10.3 Jiawei Wang
+ * $2 2022.5.17 Jiawei Wang
+ *
  */
 
 #include <vector>
@@ -32,7 +34,6 @@ public:
         int n = nums.size();
         
         vector<int> dp(n);
-     
     
         if (n == 1 || n == 0) return true;
         if (nums[0] == 0) return false;
@@ -44,5 +45,20 @@ public:
         }
         
         return (dp[n-2] > 0);
+    }
+
+    bool canJump3(vector<int>& nums) {
+      // the current state only depends on prev state
+      int n = nums.size();
+
+      if (n == 1 || n == 0) return true;
+
+      int curr = nums[0];
+
+      for (int i = 1; i < n-1; i++) {
+	if (curr == 0) return false;
+	curr = max(curr-1, nums[i]);
+      }
+      return curr > 0;
     }
 };
