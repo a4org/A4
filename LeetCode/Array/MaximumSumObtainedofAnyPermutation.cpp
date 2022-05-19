@@ -32,6 +32,7 @@ public:
 
     long ret = 0;
     for (int i = 0; i < n; i++) {
+      if (diff[i] == 0) break;
       int over = diff[i] * nums[i];
       over %= mod;
       ret += over;
