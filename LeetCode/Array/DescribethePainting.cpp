@@ -45,6 +45,7 @@ public:
 	// due to the mixed color rule (sets) and each colori is distinct
 	// every time we meet another pos, we should append it to the ret
 	// (unless the sum is zero)
+	// color change at i-> diffPairs pos i is valid
 	end = pos;
 	ret.push_back({start, end, sum});
 	start = end;
