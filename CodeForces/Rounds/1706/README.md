@@ -48,6 +48,56 @@ transaction between it.
 
 To sum up, **it makes sense to greedily select the first block of the same color with opposite parity, since it will never improve the answer if we select a later block.**
 
-
 * My Solution: **[165325194](https://codeforces.com/contest/1706/submission/165325194)**
+
+## 1706C. Qpwoeirut And The City (prefix sum)
+ 
+This problem requires you to think about it before actually writing some code. First, when N buildings in the city, there should have maximum **`(N-1)/2`** cool buildings. There are two cases:
+
+1. For **odd** N, there is only one way to achieve the maximum # of cool buildings, **just need to find the total floors necessary to make each of the alternating buildings (starting from the 2nd building) cool and that is the answer.**
+
+2. For **even** N, to achieve the maximum # of cool buildings, we should make only one choice, which means in only one chance, we can "give up" the ith building (maybe it is too relatively expensive to build) and then choose i+1. 
+
+For the second case, since we can only make one choice, the states are limited, we do not need to use dp: **just consider each possibilities:**
+
+For example, in the 4th test case from the example in the problem statement, the possible configurations of cool buildings are...
+
+(light — normal (not cool) building, **bold** — cool building)
+
+* 4 **2** 1 **3** 5 **3** 6 1
+* 4 **2** 1 **3** 5 3 **6** 1
+* 4 **2** 1 3 **5** 3 **6** 1
+* 4 2 **1** 3 **5** 3 **6** 1
+
+* 1st configuration: (5 - 2) + (6 - 3) + (7 - 3) = 10.
+* 2nd configuration: 10 - (7 - 3) + (6 - 6) = 6.
+* 3rd configuration: 6 - (6 - 3) + (5 - 5) = 3.
+* 4th configuration: 3 - (5 - 2) + (4 - 1) = 3.
+
+For even n, the floors necessary for every configuration can also be found in O(n) time using an alternating **forward prefix sum array** and an alternating **backward prefix sum array**.
+
+* My Solution:  **[165490020](https://codeforces.com/contest/1706/submission/165490020)**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

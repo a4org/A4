@@ -16,6 +16,8 @@
 #include <vector>
 using namespace std;
 
+#define ll long long
+
 #ifdef DEBUG
     #define debug(args...)            {dbg, args; cerr<<endl;}
 #else
@@ -31,8 +33,52 @@ struct debugger
     }
 } dbg;
 
-void run_case() {
+ll buildings[100100];
 
+ll get(int i) {
+  return max(0ll, max(buildings[i - 1], buildings[i + 1]) - buildings[i] + 1);
+  // long long zero
+}
+
+
+void run_case() {
+  int N; cin >> N;
+  int maxcool = (N-1) / 2;
+  int tmp;
+  for (int i = 0; i < N; i++) {
+    cin >> tmp;
+    buildings[i] = tmp;
+  }
+
+  ll ret = 0;
+
+  if (N % 2) {
+    // there is only one solution
+    // just doing sequencial scan
+    for (int i = 1; i < N-1; i+=2) {
+      ret += get(i);
+    }
+    cout << ret << endl;
+    return;
+  }
+
+  // when N is even, since we can only unselect one building to make it maximum
+  // use prefix sum
+  
+  ret = 0;
+  for (int i = 1; i < N-1; i+=2) {
+    ret += get(i);
+  }
+
+  ll ans = ret;
+
+  for (int i = N-2; i >= 1; i-=2) {
+    ret -= get(i-1);
+    ret += get(i);
+    ans = min(ret, ans);
+  }
+
+  cout << ans << endl;
 }
 
 
