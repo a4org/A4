@@ -86,7 +86,7 @@ void run_case() {
   int one = 0, two = 0;
   int tmp;
 
-  while(n--) {
+  while (n--) {
     cin >> tmp;
     if (tmp == 1) {
       one++;
@@ -98,12 +98,11 @@ void run_case() {
   if (one % 2 == 0 && two % 2 == 0) {
     cout << "YES\n";
     return;
-  } else if ( one && one % 2 == 0 && two % 2 == 1) {
+  } else if (one && one % 2 == 0 && two % 2 == 1) {
     cout << "YES\n";
   } else {
     cout << "NO\n";
-  } 
-
+  }
 }
 
 int main() {

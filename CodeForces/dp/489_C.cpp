@@ -80,37 +80,55 @@ void debug_out(vector<string> args, int idx, int LINE_NUM, Head H, Tail... T) {
 #define debug(...) 42
 #endif
 
-const int N = 200;
-
-int a[N], b[N], dp[N][N];
-// let dp[i][j] be the answers if we have only a[0..i] and b[0..j]
-
 int main() {
-  int n;
-  cin >> n;
-  for (int i = 0; i < n; i++)
-    cin >> a[i];
-  int m;
-  cin >> m;
-  for (int i = 0; i < m; i++)
-    cin >> b[i];
-  sort(a, a + n);
-  sort(b, b + m);
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < m; j++) {
-      if (i - 1 >= 0 && j - 1 >= 0)
-        dp[i][j] = max(dp[i][j], dp[i - 1][j - 1]);
-      // make sense, if we have a[i] and b[j], we can always add them to the
-      // previous answer
-      if (abs(a[i] - b[j]) <= 1)
-        dp[i][j]++;
+  int m, s;
+  cin >> m >> s;
 
-      // the compare to the previous that takes one of i, j
-      if (i - 1 >= 0)
-        dp[i][j] = max(dp[i][j], dp[i - 1][j]);
-      if (j - 1 >= 0)
-        dp[i][j] = max(dp[i][j], dp[i][j - 1]);
+  if (9 * m < s || m > 1 && s == 0) {
+    cout << "-1 -1\n";
+    return 0;
+  }
+
+  string min = "", max = "";
+
+  // 1. max
+  int cnt = s / 9;
+  for (int i = 0; i < cnt; i++) {
+    max += '9';
+  }
+  if (cnt < m)
+    max += to_string(s % 9);
+  for (int i = cnt + 1; i < m; i++) {
+    max += '0';
+  }
+
+  // 2. min
+  while (m > 0) {
+    if (9 * (m - 1) > s) {
+      if (min == "") {
+        // first digit
+        min += '1';
+        s -= 1;
+      } else {
+        min += '0';
+      }
+      m--;
+    } else if (9 * (m - 1) == s) {
+      // termination condition
+      min += '0';
+      m--;
+      while (m > 0) {
+        min += '9';
+        m--;
+      }
+      break;
+    } else {
+      int last = s - 9 * (m - 1);
+      s -= last;
+      min += to_string(last);
+      m--;
     }
+  }
 
-  cout << dp[n - 1][m - 1];
+  cout << min << " " << max << "\n";
 }

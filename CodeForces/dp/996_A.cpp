@@ -81,7 +81,8 @@ void debug_out(vector<string> args, int idx, int LINE_NUM, Head H, Tail... T) {
 #endif
 
 int main() {
-  int money; cin >> money;
+  int money;
+  cin >> money;
 
   int ans = 0;
   ans += money / 100;
