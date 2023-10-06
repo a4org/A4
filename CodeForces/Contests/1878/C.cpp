@@ -37,8 +37,7 @@ std::ostream &operator<<(std::ostream &os, const C &container) {
   ss << '[';
   for (const auto &x : container) {
     if (!first) {
-      ss << ", "
-      ;
+      ss << ", ";
     }
     first = false;
     ss << x;
@@ -81,28 +80,34 @@ void debug_out(vector<string> args, int idx, int LINE_NUM, Head H, Tail... T) {
 #define debug(...) 42
 #endif
 
-void run_case() {}
+void run_case() {
+  // purely a math problem
+  // for 1 to n, it should be like this:
+  // 1, 2, 3, 4, ..., k, k+1, ..., n-1, n.
+  // the min value of k numbers select from those n numbers is 1, 2, 3, ..., k.
+  // which is k * (k + 1) / 2.
+  // the max value of k numbers select from those n numbers is n - k, n - k + 1,
+  // ..., n - 1, n. which is (n + 1) * n / 2 - (n - k) * (n - k + 1) / 2
+  //
+  // we can prove that for x that is between min and max, we can select k numbers
+  // from 1 to n such that the sum is x.
+
+  long long n, k, x;
+  cin >> n >> k >> x;
+  long long min = k * (k + 1) / 2;
+  long long max = (n + 1) * n / 2 - (n - k) * (n - k + 1) / 2;
+
+  if (x < min || x > max) {
+    cout << "NO" << endl;
+    return;
+  }
+  cout << "YES" << endl;
+}
 
 int main() {
-  int n, a, b, c;
-  cin >> n >> a >> b >> c;
+  int tests;
+  cin >> tests;
 
-  vector<int> dp(n + 1, -1);
-  // dp[i] = max number of cuts to get i
-
-  dp[0] = 0;
-
-  for (int i = 1; i <= n; i++) {
-    if (i - a >= 0 && dp[i - a] != -1) {
-      dp[i] = max(dp[i], dp[i - a] + 1);
-    }
-    if (i - b >= 0 && dp[i - b] != -1) {
-      dp[i] = max(dp[i], dp[i - b] + 1);
-    }
-    if (i - c >= 0 && dp[i - c] != -1) {
-      dp[i] = max(dp[i], dp[i - c] + 1);
-    }
-  }
-
-  cout << dp[n];
+  while (tests-- > 0)
+    run_case();
 }

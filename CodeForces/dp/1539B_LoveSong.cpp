@@ -12,7 +12,7 @@
 using namespace ::std;
 
 string s;
-vector<vector<int>> dp;
+vector<vector<int> > dp;
 
 int helper(int i, int j) {
   if (dp[i][j] != 0) {
@@ -40,13 +40,15 @@ int main1() {
   cin >> N >> Q;
   cin >> s;
 
-  dp = vector<vector<int>>(N + 1, vector<int>(N + 1, 0));
+  dp = vector<vector<int> >(N + 1, vector<int>(N + 1, 0));
 
   int i, j;
   while (Q--) {
     cin >> i >> j;
     cout << helper(i, j) << '\n';
   }
+
+  return 0;
 }
 
 int main() {
